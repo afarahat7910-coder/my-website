@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Les Six Fondements · Tawhid, Sincérité & Chirk | Version corrigée</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8f5ef;
+            font-family: 'Segoe UI', 'Cairo', 'Roboto', system-ui, -apple-system, 'Noto Sans', sans-serif;
+            color: #1e2a2e;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #1f5e3a, #2b7a4b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            color: #4b5563;
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .panel-header {
+            background: #fff7ed;
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid #e9d6b0;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #7a4c2c;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .panel-content {
+            padding: 1.5rem;
+        }
+
+        .concept-card {
+            background: #fefcf7;
+            border-left: 6px solid #2b7a4b;
+            margin-bottom: 1.3rem;
+            padding: 1rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .concept-card:hover {
+            background: #fdf8ed;
+            transform: translateX(4px);
+        }
+
+        .concept-title {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #1f5e3a;
+            margin-bottom: 0.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .concept-desc {
+            color: #2d3e42;
+            font-size: 0.92rem;
+            margin-top: 0.3rem;
+        }
+
+        .badge-subtle {
+            background: #e9e2d0;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            color: #5e3a22;
+        }
+
+        .warning-box {
+            background: #fff1e5;
+            border-radius: 20px;
+            padding: 1rem;
+            border-right: 4px solid #cb7b3c;
+            margin-top: 1rem;
+        }
+
+        .flashcard {
+            background: #f2efe7;
+            border-radius: 28px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #e2d9ca;
+        }
+
+        .flashcard-question {
+            font-weight: 600;
+            color: #2c5a2e;
+            margin-bottom: 0.7rem;
+        }
+
+        .flashcard-answer {
+            background: #fff8e7;
+            border-radius: 20px;
+            padding: 0.9rem;
+            font-size: 0.9rem;
+            color: #2d3e3a;
+            display: none;
+            border-top: 1px dashed #cfc5aa;
+            margin-top: 0.7rem;
+        }
+
+        .flashcard.show .flashcard-answer {
+            display: block;
+        }
+
+        .quiz-option {
+            background: #fcf9f2;
+            border: 1px solid #e3d7c0;
+            border-radius: 60px;
+            padding: 0.7rem 1rem;
+            margin: 0.6rem 0;
+            cursor: pointer;
+            transition: 0.1s;
+            font-weight: 500;
+        }
+
+        .quiz-option:hover {
+            background: #e9e0ce;
+        }
+
+        .quiz-feedback {
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.4rem;
+            border-radius: 24px;
+        }
+
+        .btn {
+            background: #2b7a4b;
+            border: none;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, #edd9b0, transparent);
+            margin: 1rem 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #7f6e5a;
+        }
+
+        @media (max-width: 800px) {
+            .dashboard {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1>📖 Les Six Fondements · At‑Tawhid & Al‑Ikhlas</h1>
+        <p>La sincérité envers Allah, l’unicité dans l’adoration, les dangers du Chirk (grand et petit)<br>
+        D’après le Coran, la Sunna et les commentaires d’Ibn Al‑Uthaymin, Al‑Fawzan & Ibn Al‑Qayyim.</p>
+    </div>
+
+    <div class="dashboard">
+        <!-- COLONNE 1 : CORRIGÉE - DISTINCTION CLAIRE -->
+        <div class="panel">
+            <div class="panel-header">
+                <span>📖</span> 1 · Définitions fondamentales
+            </div>
+            <div class="panel-content">
+                <div class="concept-card">
+                    <div class="concept-title">🤍 La sincérité (Al‑Ikhlas) <span class="badge-subtle">le véritable fondement</span></div>
+                    <div class="concept-desc">Vouer exclusivement son adoration à Allah : intention, amour, glorification, actes apparents et cachés. « Dis : ma prière, mes actes de dévotion, ma vie et ma mort appartiennent à Allah, Seigneur des mondes » (6:162-163).</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">⚠️ Le grand Chirk (Shirk Akbar) <span class="badge-subtle">fait sortir de l'Islam</span></div>
+                    <div class="concept-desc">Vouer un acte d’adoration à autre qu’Allah : prière, sacrifice, vœu, invocation aux morts ou aux absents. « Certes, Allah ne pardonne pas qu’on Lui associe quoi que ce soit » (4:116).</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">⚖️ Le petit Chirk (Shirk Asghar) <span class="badge-subtle">ne fait pas sortir de la religion</span></div>
+                    <div class="concept-desc">Actes qualifiés de chirk mais n’annulant pas l’Islam : l’ostentation (ar-Riya), jurer par autre qu’Allah. Le Prophète ﷺ : « Ce que je crains le plus pour vous, c’est le petit chirk : l’ostentation. »</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">🛡️ Tawhid Rububiyya (Seigneurie) vs Uluhiyya (Adoration)</div>
+                    <div class="concept-desc">Tous reconnaissent Allah comme Créateur (Seigneurie) ; le conflit des prophètes porte sur l’Unicité dans l’adoration (Uluhiyya). Les associateurs du temps du Prophète ﷺ reconnaissaient la Seigneurie mais associaient dans l’adoration.</div>
+                </div>
+                <div class="warning-box">
+                    <strong>📢 Rappel important :</strong> La sincérité n’est pas « ne pas associer » uniquement, mais c’est le fait de vouer l’adoration à Allah Seul. Le Prophète ﷺ a fermé toutes les voies menant au Chirk (interdiction du serment par autre qu’Allah, de l’exagération dans les louanges, de la formule « Allah et toi »…).
+                </div>
+            </div>
+        </div>
+
+        <!-- COLONNE 2 : FLASHCARDS -->
+        <div class="panel">
+            <div class="panel-header">
+                <span>🃟</span> 2 · Cartes de révision
+            </div>
+            <div class="panel-content">
+                <div id="flashcardContainer"></div>
+                <div class="divider"></div>
+                <div style="font-size:0.85rem; background:#f5f1ea; border-radius: 24px; padding:0.8rem;">
+                    💡 Hadith : « Quiconque rencontre Allah sans Lui avoir rien associé entrera au Paradis, et quiconque Le rencontre en Lui ayant associé quoi que ce soit entrera en Enfer. » (Mouslim)
+                </div>
+            </div>
+        </div>
+
+        <!-- COLONNE 3 : QUIZ -->
+        <div class="panel">
+            <div class="panel-header">
+                <span>📝</span> 3 · Évalue ta compréhension
+            </div>
+            <div class="panel-content">
+                <div id="quizArea"></div>
+                <div class="divider"></div>
+                <div class="concept-card" style="background: #fcf3e2;">
+                    <div class="concept-title">📜 Ibn Al‑Qayyim</div>
+                    <div class="concept-desc">« Tout le Coran est Tawhid : ordre d’adorer Allah, interdiction de l’association, récompense des gens du Tawhid, récits des messagers… » Ne pas être de ceux qui lisent le Coran mais persistent dans le grand Chirk.</div>
+                </div>
+                <button class="btn" id="resetQuizBtn" style="margin-top: 0.8rem; width:100%">⟳ Réinitialiser le quiz</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        🌿 Version corrigée — distinction stricte entre sincérité, grand Chirk et petit Chirk.<br>
+        « Adorez Allah et ne Lui associez rien » (An-Nisa 36)
+    </footer>
+</div>
+
+<script>
+    // Flashcards (basées sur le texte)
+    const flashcardsData = [
+        { question: "📌 Qu’est-ce que la sincérité (Al‑Ikhlas) selon Ibn Al‑Uthaymin ?", answer: "C’est vouer son adoration à Allah Seul : intention, amour, glorification, actes cachés et apparents, en recherchant Sa Face et le Paradis." },
+        { question: "📌 Quelle est la différence entre le grand Chirk et le petit Chirk ?", answer: "Grand Chirk fait sortir de l’Islam (ex: invoquer un mort). Petit Chirk ne fait pas sortir de la religion mais est dangereux (ostentation, serment par autre qu’Allah)." },
+        { question: "📌 Pourquoi le Prophète ﷺ a‑t‑il interdit de dire « Ce qu’Allah veut et ce que tu veux » ?", answer: "Parce que cela établit un égal à Allah. Il faut dire : « Ce qu’Allah veut, seul. »" },
+        { question: "📌 Quel est le fondement principal sur lequel les prophètes ont combattu ?", answer: "La sincérité de la religion vouée à Allah Seul, c’est-à-dire le Tawhid Al‑Uluhiyya (unicité dans l’adoration)." },
+        { question: "📌 Comment Satan trompe-t-il les gens à propos des saints ?", answer: "Il embellit l’association comme un signe d’amour et de respect, et présente la sincérité comme un manque de respect envers les pieux." }
+    ];
+
+    const quizQuestions = [
+        {
+            text: "❓ D’après le texte, quel type de Tawhid est l’enjeu principal du combat des messagers ?",
+            options: ["Tawhid Ar-Rububiyya (Seigneurie)", "Tawhid Al-Uluhiyya (Adoration)", "Tawhid des Noms et Attributs", "Tawhid de la création"],
+            correct: 1,
+            explanation: "Le Tawhid Al-Uluhiyya (l’unicité dans l’adoration). Toutes les nations reconnaissaient la Seigneurie d’Allah, mais associaient dans l’adoration."
+        },
+        {
+            text: "❓ Que dit le Prophète ﷺ à propos du petit chirk ?",
+            options: ["Il n’a aucune conséquence", "C’est le plus grand péché", "Ce que je crains le plus pour vous, c’est le petit chirk : l’ostentation", "Il est pardonné automatiquement"],
+            correct: 2,
+            explanation: "Hadith rapporté : « Ce que je crains le plus pour vous, c’est le petit chirk » — l’ostentation (ar-Riya)."
+        },
+        {
+            text: "❓ Comment le Diable a‑t‑il présenté l’association (Chirk) aux gens ?",
+            options: ["Comme une preuve de force", "Sous l’apparence de l’amour et du suivi des pieux", "Comme un simple oubli", "Comme une obligation religieuse"],
+            correct: 1,
+            explanation: "Le passage indique : « Il leur a présenté l’association à Allah sous l’apparence de l’amour et du suivi des pieux. »"
+        },
+        {
+            text: "❓ Pourquoi ‘Umar ibn al-Khattab a-t-il demandé s’il était parmi les hypocrites ?",
+            options: ["Il doutait de sa foi", "Il craignait l’hypocrisie pratique malgré l’annonce du Paradis", "Il était hypocrite", "C’était une simple provocation"],
+            correct: 1,
+            explanation: "Bien que le Prophète lui ait annoncé le Paradis, ‘Umar craignait l’hypocrisie, preuve que nul croyant ne se sent à l’abri."
+        },
+        {
+            text: "❓ Quelle est la conséquence du grand Chirk selon Al-Ma’idah 5:72 ?",
+            options: ["Entrée au Paradis après purification", "Allah interdit le Paradis à l’associateur, son refuge est le Feu", "Une simple privation de récompense", "La perte des biens"],
+            correct: 1,
+            explanation: "« Quiconque associe à Allah d’autres divinités, Allah lui interdit le Paradis ; et son refuge sera le Feu. »"
+        }
+    ];
+
+    let currentQuizState = quizQuestions.map(() => ({ selected: null, answered: false }));
+
+    function renderFlashcards() {
+        const container = document.getElementById('flashcardContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        flashcardsData.forEach((card) => {
+            const flashDiv = document.createElement('div');
+            flashDiv.className = 'flashcard';
+            flashDiv.innerHTML = `
+                <div class="flashcard-question">📇 ${card.question}</div>
+                <div class="flashcard-answer">${card.answer}</div>
+            `;
+            flashDiv.addEventListener('click', () => flashDiv.classList.toggle('show'));
+            container.appendChild(flashDiv);
+        });
+    }
+
+    function renderQuiz() {
+        const quizContainer = document.getElementById('quizArea');
+        if (!quizContainer) return;
+        let html = '';
+        quizQuestions.forEach((q, idx) => {
+            const state = currentQuizState[idx];
+            const selectedIndex = state.selected;
+            const isAnswered = state.answered;
+            html += `<div style="margin-bottom: 2rem; border-bottom: 1px solid #efe2ce; padding-bottom: 1rem;">`;
+            html += `<div style="font-weight: 700; margin-bottom: 0.6rem;">${q.text}</div>`;
+            q.options.forEach((opt, optIdx) => {
+                let styleAttr = '';
+                let indicator = '';
+                if (isAnswered) {
+                    if (optIdx === q.correct) {
+                        styleAttr = 'style="background: #d9f0e1; border-color: #2b7a4b;"';
+                        indicator = ' ✓';
+                    } else if (optIdx === selectedIndex && optIdx !== q.correct) {
+                        styleAttr = 'style="background: #ffe1db; border-color: #c75c3c;"';
+                        indicator = ' ✗';
+                    }
+                } else if (selectedIndex === optIdx) {
+                    styleAttr = 'style="background: #e9e0ce;"';
+                }
+                html += `<div class="quiz-option" data-qidx="${idx}" data-oidx="${optIdx}" ${styleAttr}>${opt}${indicator}</div>`;
+            });
+            if (isAnswered) {
+                html += `<div class="quiz-feedback" style="color:#2d6a4f; background:#eef4ea; padding:0.5rem 1rem; border-radius:20px;">💡 ${q.explanation}</div>`;
+            } else if (selectedIndex !== null && !isAnswered) {
+                html += `<div style="margin-top: 0.5rem;"><button class="btn" data-validate="${idx}" style="font-size:0.75rem;">✔ Valider cette réponse</button></div>`;
+            }
+            html += `</div>`;
+        });
+        quizContainer.innerHTML = html;
+
+        document.querySelectorAll('.quiz-option').forEach(opt => {
+            opt.addEventListener('click', (e) => {
+                const qidx = parseInt(opt.getAttribute('data-qidx'));
+                const oidx = parseInt(opt.getAttribute('data-oidx'));
+                if (currentQuizState[qidx].answered) return;
+                currentQuizState[qidx].selected = oidx;
+                renderQuiz();
+            });
+        });
+
+        document.querySelectorAll('[data-validate]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const qidx = parseInt(btn.getAttribute('data-validate'));
+                const state = currentQuizState[qidx];
+                if (state.selected !== null && !state.answered) {
+                    state.answered = true;
+                    renderQuiz();
+                } else if (state.selected === null) {
+                    const parentDiv = btn.closest('div[style*="margin-bottom: 2rem"]');
+                    const feedback = document.createElement('div');
+                    feedback.className = 'quiz-feedback';
+                    feedback.style.background = "#ffe6cc";
+                    feedback.innerText = "⚠️ Veuillez d'abord sélectionner une réponse.";
+                    parentDiv.appendChild(feedback);
+                    setTimeout(() => feedback.remove(), 1500);
+                }
+            });
+        });
+    }
+
+    function resetQuiz() {
+        currentQuizState = quizQuestions.map(() => ({ selected: null, answered: false }));
+        renderQuiz();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderFlashcards();
+        renderQuiz();
+        const resetBtn = document.getElementById('resetQuizBtn');
+        if (resetBtn) resetBtn.addEventListener('click', resetQuiz);
+    });
+</script>
+</body>
+</html>
