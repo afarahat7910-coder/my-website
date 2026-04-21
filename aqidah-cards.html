@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Fiches interactives : Les fondamentaux de l'Islam - 'Aqîdah, Piliers, Invoctions et Sîrah</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f7f3e9 0%, #e8e0d0 100%);
+      font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, -apple-system, 'Traditional Arabic', 'Tahoma', sans-serif;
+      padding: 2rem 1rem;
+      color: #1e2a2f;
+    }
+
+    /* container principal */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* en-tête */
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      background: #2c3e2f;
+      background: linear-gradient(135deg, #2c5a2e, #1e3a2a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: none;
+      letter-spacing: -0.3px;
+    }
+
+    .header h1 span {
+      background: none;
+      color: #b97f2e;
+      background-clip: unset;
+      -webkit-background-clip: unset;
+    }
+
+    .sub {
+      color: #4a5b4e;
+      font-size: 1.1rem;
+      border-top: 2px solid #c0b28a;
+      display: inline-block;
+      padding-top: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    /* navigation rapide */
+    .nav-categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .cat-btn {
+      background: #fef9ef;
+      border: 1px solid #d6c6a8;
+      padding: 0.6rem 1.4rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      color: #3b4b3a;
+    }
+
+    .cat-btn:hover, .cat-btn.active {
+      background: #2c5a2e;
+      color: white;
+      border-color: #2c5a2e;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    /* grille de cartes */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.8rem;
+    }
+
+    /* carte question */
+    .card {
+      background: #ffffffdd;
+      backdrop-filter: blur(0px);
+      background: #fffef7;
+      border-radius: 32px;
+      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.2);
+      transition: all 0.25s;
+      border: 1px solid #ede3cf;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 32px -16px rgba(0, 0, 0, 0.25);
+      border-color: #cbbf9a;
+    }
+
+    .card-header {
+      background: #f4efdf;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 2px solid #e2d4bb;
+    }
+
+    .category-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: #d9cdae;
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-weight: 700;
+      color: #2c3e2f;
+      margin-bottom: 0.6rem;
+    }
+
+    .question-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2a412b;
+      line-height: 1.4;
+    }
+
+    .card-body {
+      padding: 1.4rem 1.5rem 1.2rem;
+      flex: 1;
+    }
+
+    .answer-area {
+      background: #faf6ed;
+      border-radius: 24px;
+      padding: 1rem 1.2rem;
+      margin-top: 0.5rem;
+      border-left: 4px solid #b48c48;
+      transition: 0.2s;
+    }
+
+    .answer-content {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #2c2b26;
+    }
+
+    .answer-content p {
+      margin: 0.4rem 0;
+    }
+
+    .answer-content ul, .answer-content ol {
+      margin: 0.5rem 0 0.2rem 1.5rem;
+    }
+
+    .btn-reveal {
+      background: none;
+      border: 1px solid #c6b282;
+      color: #7a5c2c;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-reveal:hover {
+      background: #e9dfcb;
+      border-color: #9c7e48;
+      color: #4c3512;
+    }
+
+    .reference {
+      font-size: 0.7rem;
+      color: #8f7a58;
+      margin-top: 0.8rem;
+      text-align: right;
+      border-top: 1px dashed #e0d0b4;
+      padding-top: 0.6rem;
+    }
+
+    /* mode révision tout affiché */
+    .global-toggle {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1.5rem;
+    }
+
+    .toggle-all-btn {
+      background: #2c5a2e;
+      border: none;
+      color: white;
+      padding: 0.5rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .toggle-all-btn:hover {
+      background: #1f4221;
+      transform: scale(0.98);
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6c5d44;
+      border-top: 1px solid #ddd0b6;
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 750px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .question-text {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📖 <span>Les fondamentaux de l’Islam</span><br>Apprentissage interactif</h1>
+    <div class="sub">‘Aqîdah · Piliers · Invocations · Biographie prophétique</div>
+    <p style="margin-top: 0.8rem; color: #5c543c;">Cliquez sur chaque carte pour afficher/masquer la réponse — ou activez le mode révision.</p>
+  </div>
+
+  <div class="global-toggle">
+    <button id="toggleAllBtn" class="toggle-all-btn">📚 Mode révision : afficher toutes les réponses</button>
+  </div>
+
+  <div class="nav-categories">
+    <button data-cat="all" class="cat-btn active">📌 Toutes les sections</button>
+    <button data-cat="aqidah" class="cat-btn">⭐ Croyance ('Aqîdah)</button>
+    <button data-cat="piliers" class="cat-btn">🕌 Piliers (Islam & Foi)</button>
+    <button data-cat="adhkar" class="cat-btn">🤲 Invocations (Adhkâr)</button>
+    <button data-cat="sirah" class="cat-btn">🌙 Biographie du Prophète (Sîrah)</button>
+  </div>
+
+  <div class="cards-grid" id="cardsGrid"></div>
+  <footer>
+    Basé sur « ما لا يسع المسلم 2 » — Questions essentielles pour tout musulman.<br>
+    Apprentissage pas à pas : mémorisez, comprenez, mettez en pratique.
+  </footer>
+</div>
+
+<script>
+  // --------------------------------------------------------------
+  // Données structurées : questions, réponses, catégories, références
+  // --------------------------------------------------------------
+  const questionsData = [
+    // 1-8 : 'Aqîdah
+    { id: 1, category: "aqidah", question: "Pour quelle raison principale Allah nous a-t-Il créés ?", 
+      answer: "Pour adorer Allah seul, sans associé.", reference: "page 2" },
+    { id: 2, category: "aqidah", question: "Où trouve-t-on la croyance islamique ('aqîdah) ?", 
+      answer: "Dans le Saint Coran, la Sunna prophétique et les paroles du pieux prédécesseur (as-salaf as-sâlih).", reference: "page 2" },
+    { id: 3, category: "aqidah", question: "Quels sont les trois fondements qu’il est obligatoire à tout musulman de connaître ?", 
+      answer: "1. Connaître son Seigneur.\n2. Connaître sa religion.\n3. Connaître son prophète Mohammed (paix et bénédictions sur lui).", reference: "page 3" },
+    { id: 4, category: "aqidah", question: "Quelle est la chose la plus importante qu’Allah a ordonnée ?", 
+      answer: "Le Tawhîd (l’Unicité d’Allah).", reference: "page 3" },
+    { id: 5, category: "aqidah", question: "Quelle est la chose la plus grave qu’Allah ait interdite ?", 
+      answer: "Le Chirk (associer des partenaires à Allah).", reference: "page 4" },
+    { id: 6, category: "aqidah", question: "Quelles sont les deux conditions pour qu’un acte d’adoration soit accepté ?", 
+      answer: "1. La sincérité pure pour Allah (Ikhlas).\n2. La conformité à l’enseignement du Messager d’Allah (Moutaba'ah).", reference: "page 4" },
+    { id: 7, category: "aqidah", question: "Où se trouve Allah, selon le document, et quels versets sont cités comme preuve ?", 
+      answer: "Allah est au-dessus des cieux, sur le Trône (Al-'Arch). Preuves : « Le Tout Miséricordieux S'est établi (Istawâ) sur le Trône » (Sourate Tâ Hâ, 5) et « Etes-vous à l'abri de Celui qui est au ciel... » (Sourate Al-Mulk, 16).", reference: "pages 5-6" },
+    { id: 8, category: "aqidah", question: "Quels sont les trois types de Tawhîd mentionnés ?", 
+      answer: "• Tawhîd ar-Roubûbiyyah (unicité dans la Seigneurie).\n• Tawhîd al-Oulouhiyyah (unicité dans l’adoration).\n• Tawhîd al-Asmâ’ wa as-Sifât (unicité dans les Noms et Attributs).", reference: "pages 10-11" },
+    // 9-10 : Piliers Islam et Foi
+    { id: 9, category: "piliers", question: "Quels sont les cinq piliers de l’Islam ?", 
+      answer: "1. L’attestation qu’il n’y a de divinité digne d’adoration qu’Allah et que Mohammed est Son messager.\n2. Accomplir la prière (Salât).\n3. Acquitter l’aumône légale (Zakât).\n4. Jeûner le mois de Ramadan.\n5. Accomplir le pèlerinage (Hajj) pour celui qui en a les moyens.", reference: "page 8" },
+    { id: 10, category: "piliers", question: "Quels sont les six piliers de la foi (Iman) ?", 
+      answer: "1. Croire en Allah.\n2. Croire en Ses anges.\n3. Croire en Ses livres.\n4. Croire en Ses messagers.\n5. Croire au Jour dernier.\n6. Croire au destin (Qadar), bon ou mauvais.", reference: "page 9" },
+    // 11-15 : Adhkâr (Invocations)
+    { id: 11, category: "adhkar", question: "Pourquoi faut-il préserver et réciter les invocations (Adhkâr) ?", 
+      answer: "Pour que le Miséricordieux (Ar-Rahmân) me protège et me préserve du diable (ash-shaytân).", reference: "page 12" },
+    { id: 12, category: "adhkar", question: "Que dit-on en entrant dans la maison (ou les toilettes) et en sortant ?", 
+      answer: "En entrant dans la maison : « Bismillah » (Au nom d'Allah) ou on salue sa famille.\nEn sortant de la maison : « Bismillah, tawakkaltu 'alâ Allah, wa lâ hawla wa lâ quwwata illâ billah » (Au nom d'Allah, je place ma confiance en Allah...).", reference: "pages 13,15,16" },
+    { id: 13, category: "adhkar", question: "Que dit-on si l’on oublie de dire « Bismillah » avant de manger ?", 
+      answer: "« Bismillah awwalahu wa akhirahu » (Au nom d'Allah, au début et à la fin).", reference: "page 14" },
+    { id: 14, category: "adhkar", question: "Que dit-on en sortant des toilettes ?", 
+      answer: "« Ghufrânaka » (Je Te demande pardon).", reference: "page 15" },
+    { id: 15, category: "adhkar", question: "Que dit-on à quelqu’un qui nous a fait une faveur (une bonne action) ?", 
+      answer: "« Jazâkallâhu khayran » (Qu'Allah vous récompense par un bien).", reference: "page 15" },
+    // 16-19 : Sîrah
+    { id: 16, category: "sirah", question: "Quel est le nom complet de notre Prophète (paix et bénédictions sur lui) ?", 
+      answer: "Mohammed ibn 'Abdillah ibn 'Abdil-Mouttalib.", reference: "page 18" },
+    { id: 17, category: "sirah", question: "Comment s’appelle la mère du Prophète Mohammed (paix et bénédictions sur lui) ?", 
+      answer: "Âminah bint Wahb.", reference: "page 19" },
+    { id: 18, category: "sirah", question: "À quel âge le Prophète Mohammed (paix et bénédictions sur lui) a-t-il reçu la prophétie ?", 
+      answer: "À 40 ans.", reference: "page 19" },
+    { id: 19, category: "sirah", question: "Avec quoi (message) Allah a-t-Il envoyé le Prophète ?", 
+      answer: "Avec la bonne direction (Al-Houda), la religion de la vérité (Dîn al-Haqq), et pour mettre en garde contre le Chirk (polythéisme).", reference: "page 19" }
+  ];
+
+  // mapping catégorie -> libellé FR + icône
+  const categoryLabels = {
+    aqidah: { name: "⭐ Croyance", icon: "📖" },
+    piliers: { name: "🕌 Piliers", icon: "📿" },
+    adhkar: { name: "🤲 Invocations", icon: "🌿" },
+    sirah: { name: "🌙 Biographie", icon: "✨" }
+  };
+
+  let allRevealed = false;   // mode global affichage réponses
+  let activeCategory = "all";
+
+  // Helper pour formater la réponse (texte simple -> HTML)
+  function formatAnswerText(text) {
+    // Convertir les sauts de ligne en <br> ou listes si numérotation
+    if (text.includes('\n')) {
+      let lines = text.split('\n');
+      let formatted = '';
+      for (let line of lines) {
+        line = line.trim();
+        if (line.match(/^\d+\./)) {
+          formatted += `<li style="margin-left: 1.2rem;">${line}</li>`;
+        } else if (line.startsWith('•') || line.startsWith('-')) {
+          formatted += `<li style="margin-left: 1.2rem;">${line}</li>`;
+        } else if (line !== "") {
+          formatted += `<p>${line}</p>`;
+        }
+      }
+      if (formatted.includes('<li')) {
+        return `<ul style="margin: 0.3rem 0 0 0; padding-left: 0;">${formatted}</ul>`;
+      }
+      return `<div>${text.replace(/\n/g, '<br>')}</div>`;
+    }
+    return `<p>${text}</p>`;
+  }
+
+  // Générer les cartes selon filtre + état révélé global
+  function renderCards() {
+    const grid = document.getElementById("cardsGrid");
+    const filtered = activeCategory === "all" ? questionsData : questionsData.filter(q => q.category === activeCategory);
+    
+    if (filtered.length === 0) {
+      grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:2rem;">Aucune question dans cette catégorie.</div>`;
+      return;
+    }
+    
+    let cardsHtml = "";
+    filtered.forEach(q => {
+      const catInfo = categoryLabels[q.category] || { name: "Général", icon: "📌" };
+      const answerId = `answer-${q.id}`;
+      // Si mode global allRevealed = true, on affiche la réponse directement sans bouton "Afficher"
+      const isRevealed = allRevealed;
+      const answerStyle = isRevealed ? "display: block;" : "display: none;";
+      const btnText = isRevealed ? "🙈 Masquer la réponse" : "📖 Montrer la réponse";
+      // pour le bouton, on utilisera un data-id pour basculer individuellement (mais si mode global, on désactive le toggle? on va permettre individuel en plus)
+      // mais pour rester cohérent, si mode global est actif, on peut afficher les réponses sans bouton caché? On affiche bouton "masquer" pour chaque (toggle)
+      // meilleur UX: même en mode global on laisse le bouton pour masquer localement (basculer individuellement). Tandis que le toggle global change l'état.
+      
+      cardsHtml += `
+        <div class="card" data-category="${q.category}" data-id="${q.id}">
+          <div class="card-header">
+            <div class="category-tag">${catInfo.icon} ${catInfo.name}</div>
+            <div class="question-text">${escapeHtml(q.question)}</div>
+          </div>
+          <div class="card-body">
+            <div class="answer-area" id="${answerId}" style="${answerStyle}">
+              <div class="answer-content">
+                ${formatAnswerText(q.answer)}
+              </div>
+              <div class="reference">📄 référence : ${q.reference}</div>
+            </div>
+            <button class="btn-reveal" data-id="${q.id}" data-state="${isRevealed ? 'visible' : 'hidden'}">${btnText}</button>
+          </div>
+        </div>
+      `;
+    });
+    grid.innerHTML = cardsHtml;
+    
+    // Attacher événements pour chaque bouton individuel
+    document.querySelectorAll('.btn-reveal').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const cardId = btn.getAttribute('data-id');
+        const answerDiv = document.getElementById(`answer-${cardId}`);
+        if (!answerDiv) return;
+        const isNowVisible = answerDiv.style.display !== 'none';
+        if (isNowVisible) {
+          answerDiv.style.display = 'none';
+          btn.setAttribute('data-state', 'hidden');
+          btn.innerHTML = '📖 Montrer la réponse';
+        } else {
+          answerDiv.style.display = 'block';
+          btn.setAttribute('data-state', 'visible');
+          btn.innerHTML = '🙈 Masquer la réponse';
+        }
+        // Si l'utilisateur modifie manuellement, on désynchronise le mode global
+        if (allRevealed === true && isNowVisible === false) {
+          // Il vient de montrer une réponse individuelle alors que mode global était true? On laisse mais on ne casse pas tout.
+          // On va mettre allRevealed à false pour que le toggle global reflète qu'il y a des réponses cachées.
+          if (allRevealed) {
+            allRevealed = false;
+            const toggleBtn = document.getElementById("toggleAllBtn");
+            if (toggleBtn) toggleBtn.innerHTML = "📚 Mode révision : afficher toutes les réponses";
+          }
+        } else if (allRevealed === false && isNowVisible === true) {
+          // Si toutes les réponses étaient cachées et que l'utilisateur en montre une, on vérifie si toutes deviennent visibles ? Pas nécessaire.
+          // aucun souci.
+        }
+        // Mise à jour du bouton global: s'il reste au moins une réponse cachée, le mode global n'est plus total.
+        syncGlobalButtonState();
+      });
+    });
+  }
+  
+  // Helper pour synchroniser l'état du bouton global après actions individuelles
+  function syncGlobalButtonState() {
+    const allAnswers = document.querySelectorAll('.answer-area');
+    if (allAnswers.length === 0) return;
+    let allVisible = true;
+    allAnswers.forEach(ans => {
+      if (ans.style.display === 'none') allVisible = false;
+    });
+    const toggleBtn = document.getElementById("toggleAllBtn");
+    if (allVisible) {
+      allRevealed = true;
+      toggleBtn.innerHTML = "🙈 Mode révision : masquer toutes les réponses";
+    } else {
+      allRevealed = false;
+      toggleBtn.innerHTML = "📚 Mode révision : afficher toutes les réponses";
+    }
+  }
+  
+  // Fonction pour (dé)masquer toutes les réponses
+  function toggleAllAnswers() {
+    const allAnswers = document.querySelectorAll('.answer-area');
+    if (allAnswers.length === 0) return;
+    // déterminer si au moins une est cachée -> on veut toutes les montrer
+    let someHidden = false;
+    allAnswers.forEach(ans => {
+      if (ans.style.display === 'none') someHidden = true;
+    });
+    const newDisplayState = someHidden ? 'block' : 'none';
+    const newBtnLabel = someHidden ? "🙈 Mode révision : masquer toutes les réponses" : "📚 Mode révision : afficher toutes les réponses";
+    allAnswers.forEach(ans => {
+      ans.style.display = newDisplayState;
+    });
+    // Mettre à jour tous les boutons individuels
+    document.querySelectorAll('.btn-reveal').forEach(btn => {
+      const cardId = btn.getAttribute('data-id');
+      const answerDiv = document.getElementById(`answer-${cardId}`);
+      if (answerDiv) {
+        if (newDisplayState === 'block') {
+          btn.innerHTML = '🙈 Masquer la réponse';
+          btn.setAttribute('data-state', 'visible');
+        } else {
+          btn.innerHTML = '📖 Montrer la réponse';
+          btn.setAttribute('data-state', 'hidden');
+        }
+      }
+    });
+    allRevealed = (newDisplayState === 'block');
+    const toggleBtn = document.getElementById("toggleAllBtn");
+    if (toggleBtn) toggleBtn.innerHTML = newBtnLabel;
+  }
+  
+  // Filtrage par catégorie
+  function filterByCategory(cat) {
+    activeCategory = cat;
+    // re-render garde l'état allRevealed (mais on conserve l'affichage des réponses selon allRevealed)
+    renderCards();
+    // après rendu, si allRevealed est true, on force l'affichage des réponses après filtrage
+    if (allRevealed) {
+      // Après le re-rendu, toutes les réponses doivent être visibles
+      setTimeout(() => {
+        const answers = document.querySelectorAll('.answer-area');
+        answers.forEach(ans => ans.style.display = 'block');
+        document.querySelectorAll('.btn-reveal').forEach(btn => {
+          btn.innerHTML = '🙈 Masquer la réponse';
+          btn.setAttribute('data-state', 'visible');
+        });
+      }, 10);
+    } else {
+      // pour être sûr que toutes sont cachées (sauf si allRevealed false)
+      setTimeout(() => {
+        const answers = document.querySelectorAll('.answer-area');
+        answers.forEach(ans => ans.style.display = 'none');
+        document.querySelectorAll('.btn-reveal').forEach(btn => {
+          btn.innerHTML = '📖 Montrer la réponse';
+          btn.setAttribute('data-state', 'hidden');
+        });
+      }, 10);
+    }
+  }
+  
+  // fonction d'echappement basique
+  function escapeHtml(str) {
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+      return c;
+    });
+  }
+  
+  // initialisation + événements de navigation
+  function init() {
+    renderCards();
+    const toggleBtn = document.getElementById("toggleAllBtn");
+    toggleBtn.addEventListener("click", () => {
+      toggleAllAnswers();
+    });
+    
+    const catBtns = document.querySelectorAll(".cat-btn");
+    catBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const cat = btn.getAttribute("data-cat");
+        catBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        filterByCategory(cat);
+      });
+    });
+  }
+  
+  init();
+</script>
+</body>
+</html>
