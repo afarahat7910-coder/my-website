@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Les Trois Fondements — Cours 4</title>
+<meta name="description" content="Fiche d'étude interactive : le premier fondement, la connaissance d'Allah, la Seigneurie et l'adoration." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%AA%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f7f3ea; --fg:#15302a; --muted:#5e6e69; --muted-bg:#ece6d9;
+    --card:#ffffff; --border:#e3dac6; --primary:#246b50; --primary-fg:#f7f3ea;
+    --accent:#c98a2b; --accent-soft:#f3e0c2; --shadow:0 4px 12px rgba(20,48,42,.08);
+    --radius:.75rem;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .serif{font-family:'Cormorant Garamond',Georgia,serif}
+  .arabic{font-family:'Amiri',serif;direction:rtl;line-height:2.2;font-size:1.5rem;color:var(--primary)}
+  .container{max-width:1024px;margin:0 auto;padding:0 1.5rem}
+  a{color:var(--primary)}
+
+  /* Hero */
+  header.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border);
+    background:linear-gradient(135deg,rgba(36,107,80,.08),rgba(247,243,234,1) 40%,rgba(201,138,43,.08));}
+  header.hero::after{content:"";position:absolute;inset:0;opacity:.05;
+    background-image:radial-gradient(circle at 1px 1px,#15302a 1px,transparent 0);background-size:24px 24px;pointer-events:none}
+  .hero-inner{position:relative;padding:4rem 0}
+  .badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;font-weight:600;padding:.25rem .6rem;border-radius:999px;background:var(--card);border:1px solid var(--border)}
+  .badge.solid{background:var(--accent-soft);border-color:transparent;color:#7a4f15}
+  .badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+  h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:600;letter-spacing:-.02em;margin:0 0 .5rem}
+  h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:600;margin:0}
+  h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin:0 0 .5rem}
+  .subtitle{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--primary);font-style:italic;margin:.25rem 0 1.5rem}
+  .lede{font-size:1.125rem;color:rgba(21,48,42,.78);max-width:42rem;margin:0 0 2rem}
+  .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.1rem;border-radius:.6rem;font-weight:500;cursor:pointer;border:1px solid transparent;font-size:.95rem;transition:transform .1s,background .15s}
+  .btn:active{transform:translateY(1px)}
+  .btn.primary{background:var(--primary);color:var(--primary-fg)}
+  .btn.primary:hover{background:#1d5942}
+  .btn.outline{background:var(--card);border-color:var(--border);color:var(--fg)}
+  .btn.outline:hover{background:var(--muted-bg)}
+  .btn.ghost{background:transparent;color:var(--fg)}
+  .btn.sm{padding:.4rem .7rem;font-size:.85rem}
+
+  /* Sticky nav */
+  nav.sticky{position:sticky;top:0;z-index:30;background:rgba(247,243,234,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  nav.sticky .scroll{display:flex;gap:.25rem;overflow-x:auto;padding:.5rem 0}
+  nav.sticky button{flex-shrink:0;padding:.4rem .8rem;border-radius:.4rem;font-size:.85rem;background:transparent;border:none;color:var(--muted);cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
+  nav.sticky button:hover{background:var(--muted-bg);color:var(--fg)}
+  nav.sticky button.active{background:var(--primary);color:var(--primary-fg);font-weight:500}
+
+  main{padding:3rem 0}
+  section{padding:2.5rem 0;scroll-margin-top:5rem}
+  hr.sep{border:0;border-top:1px solid var(--border);margin:0}
+  .section-head{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.5rem}
+  .section-head .icon{width:3rem;height:3rem;border-radius:.85rem;background:var(--primary);color:var(--primary-fg);display:flex;align-items:center;justify-content:center;font-size:1.25rem;box-shadow:var(--shadow);flex-shrink:0}
+  .section-head .num{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem}
+  .section-head .sub{color:var(--muted);margin:.25rem 0 0}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow)}
+  .card.soft{background:linear-gradient(135deg,rgba(36,107,80,.05),rgba(255,255,255,1) 50%,rgba(201,138,43,.05));border-color:rgba(36,107,80,.2)}
+  .card.muted{background:var(--muted-bg);border-color:var(--border)}
+  .grid{display:grid;gap:1rem}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:720px){.g2,.g3{grid-template-columns:1fr}}
+
+  .verse-card .verse-fr{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;line-height:1.7;color:rgba(21,48,42,.9)}
+  .verse-card .ref{display:flex;align-items:center;gap:.6rem;margin-top:1rem}
+  .verse-card .ref hr{flex:1;border:0;border-top:1px solid var(--border)}
+
+  .pill{display:inline-block;padding:.15rem .5rem;border-radius:999px;font-size:.7rem;font-weight:600;background:var(--accent-soft);color:#7a4f15}
+  .num-circle{width:1.75rem;height:1.75rem;border-radius:999px;background:rgba(201,138,43,.15);color:var(--accent);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+  .check{color:var(--primary);font-weight:700}
+
+  ul.clean{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem}
+  ul.clean li{display:flex;gap:.5rem;align-items:center;color:rgba(21,48,42,.85)}
+  ul.clean li::before{content:"›";color:var(--accent);font-weight:700}
+
+  /* Tabs */
+  .tabs-list{display:grid;grid-template-columns:1fr 1fr;background:var(--muted-bg);padding:.25rem;border-radius:.5rem;gap:.25rem;margin-bottom:1rem}
+  .tabs-list button{padding:.5rem;border:none;background:transparent;font-weight:500;color:var(--muted);cursor:pointer;border-radius:.4rem}
+  .tabs-list button.active{background:var(--card);color:var(--fg);box-shadow:var(--shadow)}
+  .tab-panel{display:none}
+  .tab-panel.active{display:block}
+
+  /* Accordion */
+  details.acc{border-bottom:1px solid var(--border);padding:.75rem 0}
+  details.acc summary{cursor:pointer;display:flex;align-items:center;gap:.75rem;list-style:none;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;padding:.25rem 0}
+  details.acc summary::-webkit-details-marker{display:none}
+  details.acc summary::after{content:"+";margin-left:auto;font-size:1.25rem;color:var(--muted);transition:transform .2s}
+  details.acc[open] summary::after{content:"−"}
+  details.acc .acc-body{padding:.75rem 0 .25rem;color:rgba(21,48,42,.85)}
+  details.acc .detail{font-size:.9rem;color:var(--muted);border-left:2px solid var(--accent);padding-left:.75rem;margin-top:.5rem}
+
+  /* Quiz / Flashcards */
+  .progress{height:.5rem;background:var(--muted-bg);border-radius:999px;overflow:hidden;margin:.5rem 0}
+  .progress > div{height:100%;background:var(--primary);transition:width .3s}
+  .opt{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;border:1px solid var(--border);border-radius:.6rem;cursor:pointer;background:var(--card);text-align:left;width:100%;font-size:.95rem;color:var(--fg);transition:background .15s,border-color .15s}
+  .opt:hover{background:var(--muted-bg)}
+  .opt:disabled{cursor:default}
+  .opt .letter{width:1.5rem;height:1.5rem;border:1px solid var(--border);border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
+  .opt.selected{border-color:var(--accent);background:rgba(201,138,43,.08)}
+  .opt.selected .letter{border-color:var(--accent);background:var(--accent);color:#fff}
+  .opt.correct{border-color:var(--primary);background:rgba(36,107,80,.08)}
+  .opt.correct .letter{border-color:var(--primary);background:var(--primary);color:#fff}
+  .opt.wrong{border-color:#b53d3d;background:rgba(181,61,61,.08)}
+  .opt.wrong .letter{border-color:#b53d3d;background:#b53d3d;color:#fff}
+  .explain{background:var(--muted-bg);border:1px solid var(--border);border-radius:.5rem;padding:.85rem 1rem;font-size:.9rem;margin-top:.75rem}
+
+  .flash{min-height:260px;border:2px solid rgba(36,107,80,.2);border-radius:.85rem;background:linear-gradient(135deg,rgba(36,107,80,.05),rgba(255,255,255,1) 50%,rgba(201,138,43,.05));padding:2rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.75rem;position:relative;transition:transform .15s}
+  .flash:hover{transform:translateY(-2px)}
+  .flash .face-label{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .flash .face-label.back{color:var(--primary)}
+  .flash .corner{position:absolute;top:.75rem;right:.75rem;font-size:.7rem;color:var(--muted);display:flex;gap:.5rem;align-items:center}
+
+  footer{border-top:1px solid var(--border);background:rgba(255,255,255,.5);text-align:center;padding:2rem 0;color:var(--muted);font-size:.875rem}
+  .ornament{height:8px;background-image:radial-gradient(circle,rgba(201,138,43,.45) 1px,transparent 1px);background-size:8px 8px;background-repeat:repeat-x;background-position:center;margin:2rem 0}
+
+  .row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .filter-group{display:inline-flex;background:var(--muted-bg);padding:.25rem;border-radius:.5rem;gap:.25rem}
+  .filter-group button{border:none;background:transparent;padding:.4rem .8rem;border-radius:.4rem;font-size:.85rem;font-weight:500;color:var(--muted);cursor:pointer}
+  .filter-group button.active{background:var(--card);color:var(--fg);box-shadow:var(--shadow)}
+
+  @media print {
+    nav.sticky,.btn,.no-print{display:none !important}
+    body{background:#fff}
+    section{break-inside:avoid;page-break-inside:avoid}
+    .card{box-shadow:none;border:1px solid #ddd}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="badges">
+      <span class="badge">📖 Cours 4</span>
+      <span class="badge solid">Fiche d'étude interactive</span>
+    </div>
+    <h1>Les Trois Fondements</h1>
+    <p class="subtitle">Le premier fondement : la connaissance de son Seigneur</p>
+    <p class="lede">Une fiche pédagogique pour étudier, comprendre et réviser le premier des trois fondements : la Seigneurie d'Allah, l'éducation, les bienfaits et l'adoration exclusive.</p>
+    <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+      <button class="btn primary" onclick="scrollTo_('fondement')">Commencer la lecture →</button>
+      <button class="btn outline" onclick="scrollTo_('quiz')">🎓 Aller au quiz</button>
+    </div>
+  </div>
+</header>
+
+<nav class="sticky">
+  <div class="container">
+    <div class="scroll" id="navList"></div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- INTRO -->
+  <section id="intro">
+    <div class="section-head">
+      <div class="icon">📖</div>
+      <div>
+        <div class="num">Section 1</div>
+        <h2>Introduction</h2>
+        <p class="sub">Le Seigneur est Celui qu'on adore.</p>
+      </div>
+    </div>
+    <p style="font-size:1.05rem;margin:0 0 1rem">La preuve réside dans la parole d'Allah :</p>
+    <div class="card soft verse-card">
+      <p class="verse-fr">« Ô hommes ! Adorez votre Seigneur, qui vous a créés, vous et ceux qui vous ont précédés, ainsi atteindrez-vous la piété. C'est Lui qui vous a fait la terre pour lit, et le ciel pour toit, qui précipite la pluie du ciel et par elle fait pousser toutes sortes de fruits pour vous nourrir. Ne Lui donnez donc pas d'égaux, alors que vous savez. »</p>
+      <div class="ref"><hr><span class="badge">Sourate Al-Baqarah, v. 21-22</span></div>
+    </div>
+    <div class="grid g2" style="margin-top:1rem">
+      <div class="card"><h3>❤️ Allah seul est digne d'adoration</h3><p style="margin:0;color:var(--muted)">C'est Lui qui m'a créé, qui pourvoit à ma subsistance et m'a éduqué.</p></div>
+      <div class="card"><h3>🧭 Seigneurie ⇒ Adoration</h3><p style="margin:0;color:var(--muted)">L'unicité de la Seigneurie suppose nécessairement l'unicité de l'adoration.</p></div>
+      <div class="card"><h3>💡 Connaître par les signes</h3><p style="margin:0;color:var(--muted)">On connaît son Seigneur par Ses signes (nuit, jour, soleil, lune) et Ses créatures.</p></div>
+      <div class="card"><h3>🗂️ Trois catégories de Tawhid</h3><p style="margin:0;color:var(--muted)">Rububiyya (Seigneurie), Uluhiyya (Adoration), Asma wa-Sifat (Noms et Attributs).</p></div>
+    </div>
+  </section>
+
+  <hr class="sep">
+
+  <!-- FONDEMENT -->
+  <section id="fondement">
+    <div class="section-head">
+      <div class="icon">🧭</div>
+      <div>
+        <div class="num">Section 2</div>
+        <h2>Le premier fondement</h2>
+        <p class="sub">La connaissance de son Seigneur.</p>
+      </div>
+    </div>
+    <div class="card">
+      <p>L'auteur mentionne <strong>« qui m'a éduqué »</strong>, et l'éducation (<em>at-tarbiya</em>) signifie le soin que l'on prodigue à quelqu'un pour l'éduquer. Il mentionne également <strong>« par ses bienfaits »</strong>.</p>
+      <p style="margin-bottom:0">Ainsi, si la Seigneurie appartient à Allah, alors l'adoration doit obligatoirement Lui être réservée. En effet, comment pourrais-je adorer autre que Celui qui m'a créé, pourvoit à ma subsistance et m'a éduqué ? La preuve de Son droit à l'adoration (<em>al-oulouhiya</em>) réside dans Sa Seigneurie (<em>ar-rouboubiya</em>).</p>
+    </div>
+  </section>
+
+  <hr class="sep">
+
+  <!-- RABB -->
+  <section id="rabb">
+    <div class="section-head">
+      <div class="icon">👑</div>
+      <div>
+        <div class="num">Section 3</div>
+        <h2>Ar-Rabb (Le Seigneur)</h2>
+        <p class="sub">Une appellation exclusivement réservée à Allah.</p>
+      </div>
+    </div>
+    <div class="card soft">
+      <p>Le mot <strong>« ar-Rabb »</strong> à sa forme définie (avec l'alif et le lâm) ne peut être utilisé que pour <strong>Allah</strong>, à moins qu'il soit suivi d'un nom.</p>
+      <div class="grid g2" style="margin-top:1rem">
+        <div style="border:1px solid rgba(36,107,80,.3);background:rgba(36,107,80,.05);padding:1rem;border-radius:.5rem">
+          <div style="font-size:.85rem;font-weight:600;color:var(--primary);margin-bottom:.25rem">Forme définie ✓</div>
+          <p class="serif" style="font-size:1.15rem;margin:0">« Ar-Rabb »</p>
+          <small style="color:var(--muted)">→ Réservé à Allah uniquement.</small>
+        </div>
+        <div style="border:1px solid var(--border);background:var(--muted-bg);padding:1rem;border-radius:.5rem">
+          <div style="font-size:.85rem;font-weight:600;color:var(--muted);margin-bottom:.25rem">Indéfini + nom</div>
+          <p class="serif" style="font-size:1.15rem;margin:0">« Rabb al-bayt »</p>
+          <small style="color:var(--muted)">→ « Seigneur de la maison » (le maître).</small>
+        </div>
+      </div>
+      <div style="background:rgba(201,138,43,.1);border:1px solid rgba(201,138,43,.3);border-radius:.5rem;padding:1rem;margin-top:1rem">
+        <p class="serif" style="font-style:italic;margin:0">Le Seigneur des mondes est le Seigneur de toutes les créatures : Il est Le Seul et l'Unique qui crée, qui détient la royauté, qui octroie la subsistance et qui mérite l'adoration.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sep">
+
+  <!-- TARBIYA -->
+  <section id="tarbiya">
+    <div class="section-head">
+      <div class="icon">🎓</div>
+      <div>
+        <div class="num">Section 4</div>
+        <h2>L'éducation (At-Tarbiya)</h2>
+        <p class="sub">Deux catégories distinctes.</p>
+      </div>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3><span class="num-circle">1</span> Éducation générale</h3><p style="margin:0">Concerne toutes les créatures, qu'elles soient musulmanes ou non. Allah pourvoit, protège et oriente toute Sa création.</p></div>
+      <div class="card"><h3><span class="num-circle">2</span> Éducation spécifique</h3><p style="margin:0">Concerne uniquement les alliés d'Allah — les croyants à qui Il a permis de L'adorer et d'avoir foi en Lui.</p></div>
+    </div>
+  </section>
+
+  <hr class="sep">
+
+  <!-- BIENFAITS -->
+  <section id="bienfaits">
+    <div class="section-head">
+      <div class="icon">✨</div>
+      <div>
+        <div class="num">Section 5</div>
+        <h2>Les bienfaits d'Allah</h2>
+        <p class="sub">Innombrables — matériels et immatériels.</p>
+      </div>
+    </div>
+    <div class="card soft verse-card">
+      <p class="arabic" style="text-align:right">وَإِن تَعُدُّوا۟ نِعْمَةَ ٱللَّهِ لَا تُحْصُوهَآ ۗ إِنَّ ٱللَّهَ لَغَفُورٌۭ رَّحِيمٌۭ</p>
+      <p class="verse-fr">« Et si vous comptez les bienfaits d'Allah, vous ne saurez pas les dénombrer. Car Allah est Pardonneur, et Miséricordieux. »</p>
+      <div class="ref"><hr><span class="badge">Sourate An-Nahl, v. 18</span></div>
+    </div>
+    <div class="grid g2" style="margin-top:1rem">
+      <div class="card">
+        <h3>💧 Bienfaits matériels</h3>
+        <ul class="clean"><li>L'eau</li><li>La nourriture</li><li>La santé du corps</li><li>Le logement</li></ul>
+      </div>
+      <div class="card">
+        <h3>✨ Bienfaits immatériels</h3>
+        <ul class="clean"><li>La guidance</li><li>La vie de l'âme (hayat ar-rûh)</li><li>La lumière du cœur</li><li>La foi (al-îmân)</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sep">
+
+  <!-- TAWHID -->
+  <section id="tawhid">
+    <div class="section-head">
+      <div class="icon">🗂️</div>
+      <div>
+        <div class="num">Section 6</div>
+        <h2>Les trois catégories de Tawhid</h2>
+        <p class="sub">L'unicité d'Allah étudiée sous trois aspects.</p>
+      </div>
+    </div>
+    <div class="grid g3">
+      <div class="card soft">
+        <p class="arabic" style="text-align:right;margin:0 0 .5rem">توحيد الربوبية</p>
+        <h3>Tawhid ar-Rububiyya</h3>
+        <p style="color:var(--accent);font-weight:600;margin:0 0 .5rem">Unicité dans la Seigneurie</p>
+        <p style="font-size:.9rem">Reconnaître Allah comme seul Créateur, Pourvoyeur et Maître de l'univers.</p>
+        <div class="card muted" style="padding:.75rem;box-shadow:none"><small style="text-transform:uppercase;color:var(--muted);font-weight:600">Exemple :</small><p class="serif" style="font-style:italic;margin:.25rem 0 0">« Seigneur »</p></div>
+      </div>
+      <div class="card soft">
+        <p class="arabic" style="text-align:right;margin:0 0 .5rem">توحيد الألوهية</p>
+        <h3>Tawhid al-Uluhiyya</h3>
+        <p style="color:var(--accent);font-weight:600;margin:0 0 .5rem">Unicité dans l'Adoration</p>
+        <p style="font-size:.9rem">Consacrer l'adoration exclusivement à Allah, sans aucun associé.</p>
+        <div class="card muted" style="padding:.75rem;box-shadow:none"><small style="text-transform:uppercase;color:var(--muted);font-weight:600">Exemple :</small><p class="serif" style="font-style:italic;margin:.25rem 0 0">« Louange à Allah »</p></div>
+      </div>
+      <div class="card soft">
+        <p class="arabic" style="text-align:right;margin:0 0 .5rem">توحيد الأسماء والصفات</p>
+        <h3>Tawhid al-Asma wa-Sifat</h3>
+        <p style="color:var(--accent);font-weight:600;margin:0 0 .5rem">Unicité des Noms et Attributs</p>
+        <p style="font-size:.9rem">Affirmer les noms et attributs divins tels qu'énoncés dans le Coran et la Sunna, sans altération.</p>
+        <div class="card muted" style="padding:.75rem;box-shadow:none"><small style="text-transform:uppercase;color:var(--muted);font-weight:600">Exemple :</small><p class="serif" style="font-style:italic;margin:.25rem 0 0">« à Allah »</p></div>
+      </div>
+    </div>
+    <div class="card muted" style="margin-top:1rem">
+      <p style="margin:0"><strong>À retenir :</strong> l'unicité de la Seigneurie suppose nécessairement l'unicité de l'adoration, et l'unicité de l'adoration comprend l'unicité de la Seigneurie.</p>
+    </div>
+  </section>
+
+  <hr class="sep">
+
+  <!-- SIGNES -->
+  <section id="signes">
+    <div class="section-head">
+      <div class="icon">✦</div>
+      <div>
+        <div class="num">Section 7</div>
+        <h2>Comment connaître son Seigneur ?</h2>
+        <p class="sub">Par Ses signes et Ses créatures.</p>
+      </div>
+    </div>
+    <div class="tabs-list">
+      <button class="active" onclick="setTab(this,'tab-signes')">Signes</button>
+      <button onclick="setTab(this,'tab-creatures')">Créatures</button>
+    </div>
+    <div class="tab-panel active" id="tab-signes">
+      <div class="grid g2" style="margin-bottom:1rem">
+        <div class="card" style="display:flex;align-items:center;gap:.75rem"><span style="font-size:2rem">☀️</span><div><p class="serif" style="font-size:1.1rem;margin:0">Le jour & le soleil</p><small style="color:var(--muted)">Signes manifestes</small></div></div>
+        <div class="card" style="display:flex;align-items:center;gap:.75rem"><span style="font-size:2rem">🌙</span><div><p class="serif" style="font-size:1.1rem;margin:0">La nuit & la lune</p><small style="color:var(--muted)">Signes manifestes</small></div></div>
+      </div>
+      <div class="grid g2">
+        <div class="card"><h3><span class="num-circle">1</span> Signes naturels</h3><p style="margin:0">Ils correspondent à la création d'Allah : la nuit, le jour, le soleil, la lune, les sept cieux et les sept terres.</p></div>
+        <div class="card"><h3><span class="num-circle">2</span> Signes religieux</h3><p style="margin:0">Ils renvoient aux révélations qu'Allah a fait descendre sur Ses prophètes — le Coran et les Écritures précédentes.</p></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-creatures">
+      <div class="card soft">
+        <p>Parmi Ses créatures : <strong>les sept cieux</strong> et <strong>les sept terres</strong>, ce qu'ils contiennent et ce qu'il y a entre eux.</p>
+        <p style="font-style:italic;color:var(--muted);margin:0">« Toute chose en dehors d'Allah constitue l'univers, et je fais partie de cet univers. »</p>
+      </div>
+      <div class="grid g2" style="margin-top:1rem">
+        <div class="card"><h3>Le Créateur</h3><p style="margin:0">Allah سبحانه وتعالى — Il est le Seigneur, à partir du néant.</p></div>
+        <div class="card"><h3>Les créatures (مربوب)</h3><p style="margin:0">Tout ce qu'Allah a créé : anges, djinns, hommes, animaux et tous les mondes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sep">
+
+  <!-- TRONE -->
+  <section id="trone">
+    <div class="section-head">
+      <div class="icon">👑</div>
+      <div>
+        <div class="num">Section 8</div>
+        <h2>Le Trône & le commandement</h2>
+        <p class="sub">L'établissement d'Allah sur Son Trône et la portée de Son commandement.</p>
+      </div>
+    </div>
+    <div class="card soft">
+      <h3 style="font-size:1.4rem">👑 Le Trône (al-‘Arsh)</h3>
+      <p style="color:var(--muted);margin:0 0 1rem">Une créature unique parmi les créatures d'Allah.</p>
+      <div class="grid g2">
+        <div style="display:flex;gap:.75rem;border:1px solid var(--border);background:rgba(255,255,255,.5);border-radius:.5rem;padding:1rem"><span class="num-circle">1</span><div><p style="margin:0;font-weight:600">La plus grande création</p><small style="color:var(--muted)">Le Trône est la plus grande des créations d'Allah.</small></div></div>
+        <div style="display:flex;gap:.75rem;border:1px solid var(--border);background:rgba(255,255,255,.5);border-radius:.5rem;padding:1rem"><span class="num-circle">2</span><div><p style="margin:0;font-weight:600">La plus élevée</p><small style="color:var(--muted)">C'est la plus haute des créations.</small></div></div>
+        <div style="display:flex;gap:.75rem;border:1px solid var(--border);background:rgba(255,255,255,.5);border-radius:.5rem;padding:1rem"><span class="num-circle">3</span><div><p style="margin:0;font-weight:600">Le plafond du Paradis</p><small style="color:var(--muted)">Le Trône constitue le plafond du Paradis.</small></div></div>
+        <div style="display:flex;gap:.75rem;border:1px solid var(--border);background:rgba(255,255,255,.5);border-radius:.5rem;padding:1rem"><span class="num-circle">4</span><div><p style="margin:0;font-weight:600">La plus lourde</p><small style="color:var(--muted)">C'est la plus lourde des créations d'Allah.</small></div></div>
+      </div>
+      <div style="background:rgba(36,107,80,.05);border:1px solid rgba(36,107,80,.15);border-radius:.5rem;padding:.85rem;margin-top:1rem;font-size:.9rem"><strong style="color:var(--primary)">À retenir :</strong> Allah s'est établi sur Son Trône après la création des cieux et de la terre. Cette caractéristique est mentionnée <strong>sept fois</strong> dans le Coran, dans sept sourates différentes.</div>
+    </div>
+    <h3 style="font-size:1.4rem;margin-top:1.5rem">Les deux types de commandement</h3>
+    <div class="grid g2">
+      <div class="card"><h3><span class="num-circle">1</span> Commandement universel</h3><p style="margin:0">Il a lieu inévitablement. Tout ce qu'Allah décrète dans l'univers se réalise sans faute.</p></div>
+      <div class="card"><h3><span class="num-circle">2</span> Commandement religieux</h3><p style="margin:0">Il concerne les actes d'adoration ordonnés. Ils peuvent être accomplis ou abandonnés par le serviteur.</p></div>
+    </div>
+  </section>
+
+  <hr class="sep">
+
+  <!-- VERSETS -->
+  <section id="versets">
+    <div class="section-head">
+      <div class="icon">❝</div>
+      <div>
+        <div class="num">Section 9</div>
+        <h2>Versets clés du cours</h2>
+        <p class="sub">À méditer et à mémoriser.</p>
+      </div>
+    </div>
+    <div id="versesList" style="display:flex;flex-direction:column;gap:1rem"></div>
+  </section>
+
+  <hr class="sep">
+
+  <!-- GLOSSAIRE -->
+  <section id="glossaire">
+    <div class="section-head">
+      <div class="icon">📚</div>
+      <div>
+        <div class="num">Section 10</div>
+        <h2>Glossaire</h2>
+        <p class="sub">Les termes essentiels à connaître.</p>
+      </div>
+    </div>
+    <div class="card" id="glossaryList"></div>
+  </section>
+
+  <hr class="sep">
+
+  <!-- FLASHCARDS -->
+  <section id="flashcards">
+    <div class="section-head">
+      <div class="icon">🗂️</div>
+      <div>
+        <div class="num">Section 11</div>
+        <h2>Flashcards</h2>
+        <p class="sub">Révise les termes arabes et les versets en mode carte mémoire.</p>
+      </div>
+    </div>
+    <div class="card no-print">
+      <div class="row" style="margin-bottom:.75rem">
+        <div class="filter-group" id="flashFilters">
+          <button class="active" data-f="Tous">Tous</button>
+          <button data-f="Termes">Termes</button>
+          <button data-f="Versets">Versets</button>
+        </div>
+        <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+          <span class="badge"><span id="knownCount">0</span>/<span id="totalCount">0</span> maîtrisées</span>
+          <button class="btn outline sm" onclick="shuffleCards()">🔀 Mélanger</button>
+          <button class="btn outline sm" onclick="resetCards()">↺ Reset</button>
+        </div>
+      </div>
+      <div class="progress"><div id="flashProgress" style="width:0%"></div></div>
+      <p style="font-size:.8rem;color:var(--muted);margin:.25rem 0 1rem">Carte <span id="flashIndex">1</span> sur <span id="flashTotal">0</span></p>
+      <div class="flash" id="flashCard" onclick="flipCard()"></div>
+      <div class="row" style="margin-top:1rem;justify-content:space-between">
+        <button class="btn outline" onclick="prevCard()">← Précédent</button>
+        <button class="btn primary" id="knownBtn" onclick="markKnown()">✓ Je maîtrise</button>
+        <button class="btn outline" onclick="nextCard()">Suivant →</button>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sep">
+
+  <!-- QUIZ -->
+  <section id="quiz">
+    <div class="section-head">
+      <div class="icon">🎓</div>
+      <div>
+        <div class="num">Section 12</div>
+        <h2>Quiz interactif</h2>
+        <p class="sub">Teste tes connaissances en 8 questions.</p>
+      </div>
+    </div>
+    <div class="card no-print" id="quizCard"></div>
+  </section>
+
+  <div class="ornament"></div>
+  <div style="text-align:center;padding:2rem 0">
+    <p class="arabic" style="font-size:1.5rem;color:var(--primary);margin:0 0 .5rem">تَبَارَكَ ٱللَّهُ رَبُّ ٱلْعَـٰلَمِينَ</p>
+    <p class="serif" style="font-style:italic;color:var(--muted);margin:0">Gloire à Allah, Seigneur de l'Univers !</p>
+  </div>
+</main>
+
+<footer>
+  <div class="container">Fiche d'étude interactive — <em>Les Trois Fondements</em>, Cours 4.</div>
+</footer>
+
+<script>
+// ============ DATA ============
+const sections=[
+  {id:"intro",label:"Introduction"},{id:"fondement",label:"Le 1er fondement"},
+  {id:"rabb",label:"Ar-Rabb"},{id:"tarbiya",label:"L'éducation"},
+  {id:"bienfaits",label:"Les bienfaits"},{id:"tawhid",label:"Les 3 Tawhid"},
+  {id:"signes",label:"Connaître Allah"},{id:"trone",label:"Le Trône"},
+  {id:"versets",label:"Versets clés"},{id:"glossaire",label:"Glossaire"},
+  {id:"flashcards",label:"Flashcards"},{id:"quiz",label:"Quiz"}
+];
+
+const keyVerses=[
+  {reference:"Sourate An-Nahl, v. 18",french:"Et si vous comptez les bienfaits d'Allah, vous ne saurez pas les dénombrer. Car Allah est Pardonneur, et Miséricordieux.",arabic:"وَإِن تَعُدُّوا۟ نِعْمَةَ ٱللَّهِ لَا تُحْصُوهَآ ۗ إِنَّ ٱللَّهَ لَغَفُورٌۭ رَّحِيمٌۭ"},
+  {reference:"Sourate Al-Fâtihah, v. 2",french:"Louange à Allah, Seigneur de l'Univers.",arabic:"ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ"},
+  {reference:"Sourate Al-Anbiya, v. 25",french:"Et Nous n'avons envoyé avant toi aucun Messager à qui Nous n'ayons révélé : « Point de divinité en dehors de Moi. Adorez-Moi donc. »",arabic:"وَمَآ أَرْسَلْنَا مِن قَبْلِكَ مِن رَّسُولٍ إِلَّا نُوحِىٓ إِلَيْهِ أَنَّهُۥ لَآ إِلَـٰهَ إِلَّآ أَنَا۠ فَٱعْبُدُونِ"},
+  {reference:"Sourate Fussilat, v. 37",french:"Parmi Ses merveilles, sont la nuit et le jour, le soleil et la lune : ne vous prosternez ni devant le soleil, ni devant la lune, mais prosternez-vous devant Allah qui les a créés, si c'est Lui que vous adorez."},
+  {reference:"Sourate Al-A'râf, v. 54",french:"Votre Seigneur, c'est Allah, qui a créé les cieux et la terre en six jours, puis S'est établi sur le Trône. Il couvre le jour de la nuit qui poursuit celui-ci sans arrêt. (Il a créé) le soleil, la lune et les étoiles, soumis à Son commandement. La création et le commandement n'appartiennent qu'à Lui. Gloire à Allah, Seigneur de l'Univers !"},
+  {reference:"Sourate Fussilat, v. 53",french:"Nous leur montrerons Nos signes dans l'univers et en eux-mêmes, jusqu'à ce qu'il leur devienne évident que c'est cela (le Coran), la Vérité.",arabic:"سَنُرِيهِمْ ءَايَـٰتِنَا فِى ٱلْـَٔافَاقِ وَفِىٓ أَنفُسِهِمْ حَتَّىٰ يَتَبَيَّنَ لَهُمْ أَنَّهُ ٱلْحَقُّ"}
+];
+
+const glossary=[
+  {term:"Ar-Rabb",arabic:"الرَّبّ",definition:"Le Seigneur — Celui qui crée, possède, pourvoit et éduque.",details:"À sa forme définie (avec l'alif et le lâm), ce mot ne s'emploie que pour Allah. Sans alif et suivi d'un nom, il peut désigner un possesseur (ex. seigneur de la maison)."},
+  {term:"At-Tarbiya",arabic:"التَّرْبِيَة",definition:"L'éducation, le soin que l'on prodigue à quelqu'un pour l'élever.",details:"Elle se divise en éducation générale (toutes les créatures) et spécifique (les alliés d'Allah, les croyants)."},
+  {term:"Al-Hamd",arabic:"الحَمْد",definition:"Une louange teintée d'amour, de glorification et de soumission envers Celui que l'on aime et vénère."},
+  {term:"Al-Âlamîn",arabic:"العَالَمِين",definition:"Les mondes : tout ce qui existe en dehors d'Allah — anges, djinns, hommes, animaux, monde sous-marin, etc."},
+  {term:"Al-Oulouhiya",arabic:"الأُلُوهِيَّة",definition:"Le droit exclusif d'Allah à l'adoration."},
+  {term:"Ar-Rouboubiya",arabic:"الرُّبُوبِيَّة",definition:"La Seigneurie d'Allah — Sa qualité de Créateur et Maître."},
+  {term:"Tabaraka",arabic:"تَبَارَكَ",definition:"« Béni soit » — terme exclusivement attribué à Allah ; il est interdit de l'utiliser pour autre que Lui."},
+  {term:"Âyah",arabic:"آيَة",definition:"Signe. Deux types : signes naturels (la création) et signes religieux (les révélations descendues sur les prophètes)."}
+];
+
+const quiz=[
+  {q:"Quel est le premier fondement enseigné dans ce cours ?",o:["La connaissance du Prophète","La connaissance de son Seigneur","La connaissance de la prière","La connaissance des anges"],c:1,e:"Le premier fondement est que le serviteur connaisse son Seigneur — Celui qui l'a créé, pourvoit à sa subsistance et l'a éduqué."},
+  {q:"Combien de catégories d'éducation (tarbiya) sont mentionnées ?",o:["Une seule","Deux : générale et spécifique","Trois","Quatre"],c:1,e:"L'éducation générale concerne toutes les créatures ; l'éducation spécifique concerne les croyants, alliés d'Allah."},
+  {q:"Le mot « ar-Rabb » à la forme définie peut désigner :",o:["N'importe quel maître","Uniquement Allah","Le père de famille","Un savant religieux"],c:1,e:"À sa forme définie (avec l'alif et le lâm), « ar-Rabb » ne peut être utilisé que pour Allah."},
+  {q:"Quels sont les deux types de bienfaits évoqués ?",o:["Visibles et invisibles","Matériels et immatériels","Présents et futurs","Personnels et collectifs"],c:1,e:"Les bienfaits matériels (eau, nourriture…) et les bienfaits immatériels (guidance, foi, lumière du cœur…)."},
+  {q:"Comment connaît-on son Seigneur ?",o:["Par la philosophie seule","Par Ses signes et Ses créatures","Par les rêves","Par les ancêtres"],c:1,e:"Par Ses signes (nuit, jour, soleil, lune) et Ses créatures (les sept cieux et les sept terres)."},
+  {q:"Combien de catégories de Tawhid (Unicité) sont étudiées ?",o:["Deux","Trois","Quatre","Cinq"],c:1,e:"Trois : Tawhid ar-Rububiyya (Seigneurie), Tawhid al-Uluhiyya (Adoration), Tawhid al-Asma wa-Sifat (Noms et Attributs)."},
+  {q:"Combien de fois l'établissement d'Allah sur le Trône est-il mentionné dans le Coran ?",o:["Trois fois","Cinq fois","Sept fois","Dix fois"],c:2,e:"Cette caractéristique est mentionnée sept fois, dans sept sourates différentes."},
+  {q:"Le commandement universel d'Allah :",o:["Peut être désobéi","A lieu inévitablement","Concerne uniquement les anges","Est facultatif"],c:1,e:"Le commandement universel a lieu inévitablement, alors que le commandement religieux peut être accompli ou abandonné."}
+];
+
+// ============ NAV ============
+function scrollTo_(id){const el=document.getElementById(id);if(el){const y=el.getBoundingClientRect().top+window.scrollY-80;window.scrollTo({top:y,behavior:"smooth"})}}
+const navList=document.getElementById("navList");
+sections.forEach(s=>{const b=document.createElement("button");b.textContent=s.label;b.dataset.id=s.id;b.onclick=()=>scrollTo_(s.id);navList.appendChild(b)});
+function updateActiveNav(){let cur="intro";for(const s of sections){const el=document.getElementById(s.id);if(el&&el.getBoundingClientRect().top<=140)cur=s.id}navList.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b.dataset.id===cur))}
+window.addEventListener("scroll",updateActiveNav,{passive:true});updateActiveNav();
+
+// ============ TABS ============
+function setTab(btn,id){btn.parentElement.querySelectorAll("button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("active"));document.getElementById(id).classList.add("active")}
+
+// ============ VERSES ============
+const versesEl=document.getElementById("versesList");
+keyVerses.forEach(v=>{
+  const card=document.createElement("div");card.className="card soft verse-card";
+  card.innerHTML=(v.arabic?`<p class="arabic" style="text-align:right">${v.arabic}</p>`:"")+
+    `<p class="verse-fr">« ${v.french} »</p><div class="ref"><hr><span class="badge">${v.reference}</span></div>`;
+  versesEl.appendChild(card)
+});
+
+// ============ GLOSSARY ============
+const glossEl=document.getElementById("glossaryList");
+glossary.forEach((g,i)=>{
+  const d=document.createElement("details");d.className="acc";if(i===0)d.open=true;
+  d.innerHTML=`<summary><span>${g.term}</span>${g.arabic?`<span class="arabic" style="font-size:1.2rem">${g.arabic}</span>`:""}</summary>
+    <div class="acc-body"><p style="margin:0">${g.definition}</p>${g.details?`<p class="detail">${g.details}</p>`:""}</div>`;
+  glossEl.appendChild(d)
+});
+
+// ============ FLASHCARDS ============
+const allCards=[
+  ...glossary.map(g=>({front:g.term,frontArabic:g.arabic,back:g.definition,backDetail:g.details,category:"Termes"})),
+  ...keyVerses.map(v=>({front:v.reference,frontArabic:v.arabic,back:v.french,category:"Versets"}))
+];
+let cards=[...allCards],fIdx=0,flipped=false,filter="Tous",known=new Set();
+function filtered(){return filter==="Tous"?cards:cards.filter(c=>c.category===filter)}
+function renderFlash(){
+  const list=filtered();const total=list.length;document.getElementById("flashTotal").textContent=total;document.getElementById("totalCount").textContent=allCards.length;document.getElementById("knownCount").textContent=known.size;
+  if(total===0)return;if(fIdx>=total)fIdx=0;
+  const c=list[fIdx];document.getElementById("flashIndex").textContent=fIdx+1;
+  document.getElementById("flashProgress").style.width=((fIdx+1)/total*100)+"%";
+  const el=document.getElementById("flashCard");
+  el.innerHTML=`<div class="corner"><span class="badge">${c.category}</span><span>↻</span></div>`+
+    (flipped
+      ?`<span class="face-label back">Verso</span><p class="serif" style="font-size:1.2rem;font-style:italic;margin:0;line-height:1.6">« ${c.back} »</p>${c.backDetail?`<p style="font-size:.85rem;color:var(--muted);border-left:2px solid var(--accent);padding-left:.75rem;max-width:36rem">${c.backDetail}</p>`:""}`
+      :`<span class="face-label">Recto — clique pour révéler</span>${c.frontArabic?`<p class="arabic" style="font-size:1.8rem;margin:0">${c.frontArabic}</p>`:""}<p class="serif" style="font-size:1.6rem;margin:0">${c.front}</p>`);
+  const kb=document.getElementById("knownBtn");kb.textContent=known.has(fIdx)?"✓ Déjà maîtrisée":"✓ Je maîtrise";kb.className="btn "+(known.has(fIdx)?"outline":"primary")
+}
+function flipCard(){flipped=!flipped;renderFlash()}
+function nextCard(){flipped=false;const t=filtered().length;if(t)fIdx=(fIdx+1)%t;renderFlash()}
+function prevCard(){flipped=false;const t=filtered().length;if(t)fIdx=(fIdx-1+t)%t;renderFlash()}
+function shuffleCards(){for(let i=cards.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[cards[i],cards[j]]=[cards[j],cards[i]]}fIdx=0;flipped=false;renderFlash()}
+function resetCards(){cards=[...allCards];fIdx=0;flipped=false;known.clear();renderFlash()}
+function markKnown(){if(known.has(fIdx))known.delete(fIdx);else known.add(fIdx);nextCard()}
+document.getElementById("flashFilters").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll("#flashFilters button").forEach(x=>x.classList.remove("active"));b.classList.add("active");filter=b.dataset.f;fIdx=0;flipped=false;renderFlash()});
+renderFlash();
+
+// ============ QUIZ ============
+let qIdx=0,qSel=null,qRev=false,qScore=0,qDone=false;
+function renderQuiz(){
+  const card=document.getElementById("quizCard");
+  if(qDone){
+    const pct=Math.round(qScore/quiz.length*100);
+    card.innerHTML=`<div style="text-align:center;padding:1.5rem">
+      <div style="width:4rem;height:4rem;border-radius:999px;background:rgba(36,107,80,.1);color:var(--primary);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem">🎓</div>
+      <h3 class="serif" style="font-size:1.5rem;margin:0">Quiz terminé !</h3>
+      <p style="font-size:2.5rem;font-weight:700;color:var(--primary);margin:.5rem 0">${qScore} / ${quiz.length}</p>
+      <p style="color:var(--muted)">${pct>=80?"Excellent travail ! Tu maîtrises ce cours.":pct>=50?"Bon travail. Continue à réviser pour consolider.":"Reprends le cours puis recommence le quiz."}</p>
+      <button class="btn primary" onclick="resetQuiz()" style="margin-top:1rem">↺ Recommencer</button></div>`;
+    return
+  }
+  const q=quiz[qIdx];const prog=((qIdx+(qRev?1:0))/quiz.length)*100;
+  card.innerHTML=`<div class="row"><h3 class="serif" style="font-size:1.2rem;margin:0">Question ${qIdx+1} sur ${quiz.length}</h3><span class="badge">Score : ${qScore}</span></div>
+    <div class="progress" style="margin:.5rem 0 1rem"><div style="width:${prog}%"></div></div>
+    <p style="font-size:1.05rem;font-weight:500">${q.q}</p>
+    <div style="display:flex;flex-direction:column;gap:.5rem">${q.o.map((o,i)=>{
+      let cls="opt";if(qRev&&i===q.c)cls+=" correct";else if(qRev&&i===qSel&&i!==q.c)cls+=" wrong";else if(i===qSel)cls+=" selected";
+      const letter=qRev&&i===q.c?"✓":qRev&&i===qSel?"✕":String.fromCharCode(65+i);
+      return `<button class="${cls}" ${qRev?"disabled":""} onclick="selOpt(${i})"><span class="letter">${letter}</span><span>${o}</span></button>`}).join("")}</div>
+    ${qRev?`<div class="explain"><strong style="color:var(--primary)">Explication</strong><p style="margin:.25rem 0 0">${q.e}</p></div>`:""}
+    <div style="text-align:right;margin-top:1rem">${qRev
+      ?`<button class="btn primary" onclick="nextQ()">${qIdx+1>=quiz.length?"Voir le résultat":"Question suivante"} →</button>`
+      :`<button class="btn primary" onclick="checkQ()" ${qSel===null?"disabled style='opacity:.5'":""}>Valider</button>`}</div>`
+}
+function selOpt(i){if(qRev)return;qSel=i;renderQuiz()}
+function checkQ(){if(qSel===null)return;qRev=true;if(qSel===quiz[qIdx].c)qScore++;renderQuiz()}
+function nextQ(){if(qIdx+1>=quiz.length){qDone=true;renderQuiz();return}qIdx++;qSel=null;qRev=false;renderQuiz()}
+function resetQuiz(){qIdx=0;qSel=null;qRev=false;qScore=0;qDone=false;renderQuiz()}
+renderQuiz();
+</script>
+</body>
+</html>
