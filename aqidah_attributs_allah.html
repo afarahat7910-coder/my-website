@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>🌙 Aqîdah Interactive : Les Attributs d’Allah (Ahl al-Sunna)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f7f3e9 0%, #e8e0d0 100%);
+            font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, -apple-system, 'Traditional Arabic', 'Amiri', serif;
+            color: #1e2a2f;
+            padding: 2rem 1rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: rgba(255, 255, 245, 0.92);
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            backdrop-filter: blur(0px);
+        }
+
+        /* En-tête */
+        .header {
+            background: #1e3c2c;
+            color: #f9e7c2;
+            padding: 1.8rem 2rem;
+            text-align: center;
+            border-bottom: 5px solid #d4af6c;
+        }
+
+        .header h1 {
+            font-size: 1.9rem;
+            letter-spacing: -0.3px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .header p {
+            font-size: 1rem;
+            margin-top: 0.6rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* navigation onglets */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            background: #d9cdb0;
+            border-bottom: 1px solid #c1b18a;
+            gap: 0.2rem;
+            padding: 0.5rem 0.5rem 0 0.5rem;
+        }
+
+        .tab-btn {
+            background: #e7dcc4;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 1rem 1rem 0 0;
+            transition: all 0.2s;
+            color: #2c4b3a;
+            font-family: inherit;
+            letter-spacing: 0.3px;
+        }
+
+        .tab-btn.active {
+            background: #fffbf0;
+            color: #1e3c2c;
+            border-bottom: 3px solid #d4af6c;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #cbbf9c;
+            color: #1e2a1f;
+        }
+
+        /* contenu des onglets */
+        .tab-pane {
+            display: none;
+            padding: 2rem 2rem 2.5rem;
+            animation: fadeIn 0.3s ease;
+            background: #fffbf0;
+        }
+
+        .tab-pane.active-pane {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* cartes et sections */
+        .card-theme {
+            background: #ffffffdb;
+            border-radius: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.2rem 1.8rem;
+            border-left: 8px solid #c8a86b;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.2s;
+        }
+
+        .card-theme h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #2a4b35;
+            border-bottom: 2px dashed #e2cca9;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .verset, .hadith, .explication {
+            margin: 1rem 0;
+            padding: 0.8rem 1rem;
+            background: #fef7e8;
+            border-radius: 1rem;
+            font-size: 1rem;
+        }
+
+        .verset strong, .hadith strong {
+            color: #b47c2e;
+            font-weight: 700;
+        }
+
+        .badge {
+            background: #2a5f44;
+            color: #f9e7b3;
+            padding: 0.15rem 0.7rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 0.6rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: #faf3e2;
+            border-radius: 1.2rem;
+            padding: 1.2rem;
+            border: 1px solid #eeddbb;
+        }
+
+        .info-card h3 {
+            color: #9b6e3e;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, #e2cbaa, transparent);
+        }
+
+        .footnote {
+            background: #e9e1cf;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            text-align: center;
+            color: #4f3e2c;
+        }
+
+        button.copy-btn {
+            background: #d9c594;
+            border: none;
+            border-radius: 2rem;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.7rem;
+            cursor: pointer;
+            margin-left: 1rem;
+            vertical-align: middle;
+        }
+
+        button.copy-btn:hover {
+            background: #b88b44;
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+            .tab-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+            .tab-pane {
+                padding: 1.2rem;
+            }
+            .header h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📖 L’Établissement, la Parole et les Attributs divins <span style="font-weight:normal;">🤍</span></h1>
+        <p>✧ Doctrine d’Ahl al-Sunna wal-Jamā‘ah — affirmation sans Tahrīf, Ta‘tīl, Takyīf ni Tamthīl ✧</p>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="tab1">✨ Al-Istiwâ' & Al-'Uluw</button>
+        <button class="tab-btn" data-tab="tab2">📜 Al-Kalâm (Parole d'Allah)</button>
+        <button class="tab-btn" data-tab="tab3">🌙 Al-Ma‘iyyah (Présence & Science)</button>
+        <button class="tab-btn" data-tab="tab4">🤲 Hadiths : Descente, Rire, Vue</button>
+        <button class="tab-btn" data-tab="tab5">⚖️ Voie Médiane & Synthèse</button>
+    </div>
+
+    <!-- PAN 1 : Istiwa / 'Uluw -->
+    <div id="tab1" class="tab-pane active-pane">
+        <div class="card-theme">
+            <h2>📌 L’Établissement (Al-Istiwâ’) · Élévation et Hauteur</h2>
+            <div class="verset">🌸 <strong>“Il S'est établi sur le Trône sans [que l'on sache] comment.”</strong> — <em>Le sens est connu, al-Kayf (modalité) inconnu.</em></div>
+            <div class="explication">✅ <strong>Principe sunnite :</strong> Affirmer l’Istiwâ’ comme réalité, une élévation qui sied à Allah. Il ne ressemble à aucune créature. <br> 
+            « Il n’y a rien qui Lui ressemble ; et c’est Lui l’Audient, le Clairvoyant » (Sourate ash-Shūrā 11).</div>
+            <div class="verset">🌟 <strong>Allah est au-dessus du Trône,</strong> et Sa science englobe tout. L’istiwâ’ est un attribut réel sans ‘comment’.</div>
+        </div>
+        <div class="grid-2">
+            <div class="info-card">
+                <h3>🔹 Tahrīf, Ta‘tīl, Tamthīl ?</h3>
+                <p>❌ Pas d’altération du sens. ❌ Pas de négation des attributs. ❌ Pas d’assimilation à la création. ✅ On laisse le texte tel quel, avec la foi en sa vérité et en la transcendance d’Allah.</p>
+            </div>
+            <div class="info-card">
+                <h3>📖 Versets clés</h3>
+                <p>« C’est Lui qui a créé les cieux et la terre en six jours, puis S’est établi sur le Trône. » (Al-Hadîd 4)<br>
+                « Le Tout Miséricordieux S’est établi sur le Trône. » (Tā Hā 5)</p>
+            </div>
+        </div>
+        <div class="footnote">
+            💡 <strong>Règle d’or des pieux prédécesseurs :</strong> « L’istiwâ’ est connu, mais le comment (kayf) est inconnu. L’affirmer est une obligation, et l’interroger sur la modalité est une innovation. »
+        </div>
+    </div>
+
+    <!-- PAN 2 : Attribut de la Parole -->
+    <div id="tab2" class="tab-pane">
+        <div class="card-theme">
+            <h2>🗣️ La Parole d’Allah (Al-Kalâm) · Discours réel</h2>
+            <div class="verset">📜 « Et Allah a parlé à Moïse de vive voix. » (An-Nisā’ 164)</div>
+            <div class="verset">📜 « Et qui est plus véridique qu’Allah en parole ? » (An-Nisā’ 122)</div>
+            <div class="explication">✔ Allah parle quand Il veut, comme Il veut, à qui Il veut. Il a parlé à Mūsā, à Muhammad ﷺ durant l’Ascension, Il parlera aux croyants au Paradis. Sa parole est un attribut éternel et actuel, renouvelée selon Sa volonté.<br>
+            ❌ Rejet de la thèse des mutakallimūn qui disent “parole éternelle unique” sans lettres ni sons. La Sunna affirme qu’Allah parle avec une voix, entendue par les anges et les prophètes.</div>
+        </div>
+        <div class="grid-2">
+            <div class="info-card">
+                <h3>📖 Exemples coraniques</h3>
+                <p>« Nul ne peut modifier Ses paroles » (Al-An‘ām 115)<br>
+                « Et le jour où Il les appellera » (Al-Qaşaş 65)<br>
+                « Le Saint-Esprit l’a fait descendre de la part de ton Seigneur en toute vérité » (An-Nahl 102).</p>
+            </div>
+            <div class="info-card">
+                <h3>🎙️ La voix d’Allah</h3>
+                <p>Hadith authentique : « Allah appellera Adam d’une voix… » (Bukhārī & Muslim). Les gens de la Sunna affirment la voix (Sawt) appropriée à Allah, sans ressemblance.</p>
+            </div>
+        </div>
+        <div class="verset">✨ Et le Coran est la parole d’Allah, révélée, non créée. C’est la croyance d’Ahl al-Sunna.</div>
+    </div>
+
+    <!-- PAN 3 : Al-Ma‘iyyah (accompagnement) générale / spécifique -->
+    <div id="tab3" class="tab-pane">
+        <div class="card-theme">
+            <h2>🌍 Al-Ma‘iyyah : “Allah est avec vous” — Science et assistance</h2>
+            <div class="verset">📖 « Il est avec vous où que vous soyez. Et Allah observe parfaitement ce que vous faites. » (Al-Hadîd 4)</div>
+            <div class="explication"><strong>Présence générale (Ma‘iyyah ‘Āmmah)</strong> : par Sa science, Sa connaissance enveloppe toute chose. Allah est au-dessus du Trône, et rien ne Lui échappe.<br>
+            <strong>Présence particulière (Ma‘iyyah Khāṣṣah)</strong> : avec Ses alliés (awliyā’), les prophètes et les croyants, par Son aide, Sa protection et Son secours spécifique.<br>
+            ⚜️ Exemple : « Ne t'afflige pas, car Allah est avec nous » (At-Tawbah 40) — dans la grotte avec le Prophète et Abū Bakr.</div>
+        </div>
+        <div class="grid-2">
+            <div class="info-card">
+                <h3>🔍 Science englobante</h3>
+                <p>« Nulle femelle ne porte ni ne met bas sans qu’Il n’en ait connaissance » (Fāṭir 11). « Allah cerne toute chose de Sa science » (Aṭ-Ṭalāq 12).</p>
+            </div>
+            <div class="info-card">
+                <h3>🕊️ Avec les endurants</h3>
+                <p>« Certes Allah est avec les endurants » (Al-Baqarah 249). « Je suis avec vous : J’entends et Je vois » (Tā Hā 46).</p>
+            </div>
+        </div>
+        <div class="footnote">
+            💫 Le croyant concilie : Allah est au-dessus du Trône (élevé), et pourtant Il est proche de Ses serviteurs par Sa science, Son ouïe et Sa miséricorde.
+        </div>
+    </div>
+
+    <!-- PAN 4 : Hadiths authentiques (Descente, Joie, Rire, Pied, Vision) -->
+    <div id="tab4" class="tab-pane">
+        <div class="card-theme">
+            <h2>📿 Hadiths des attributs · La Sunna explicative</h2>
+            <div class="hadith">⭐ <strong>La Descente :</strong> « Notre Seigneur descend chaque nuit au ciel le plus bas, dans le dernier tiers de la nuit, et dit : “Qui M’invoque, que Je lui réponde ?” » (Bukhārī, Muslim). <span class="badge">Affirmation sans modalité</span></div>
+            <div class="hadith">😂 <strong>Le Rire d’Allah :</strong> « Allah rit de deux hommes dont l’un tue l’autre, puis tous deux entrent au Paradis. » (Bukhārī, Muslim). Rire réel, approprié à Sa majesté.</div>
+            <div class="hadith">👣 <strong>Le Pied :</strong> « … jusqu’à ce que le Seigneur de la Puissance y place Son Pied, alors l’Enfer dira “Assez ! Assez !” » (Bukhārī, Muslim). Attribut du pied (qadam) sans ressemblance.</div>
+            <div class="hadith">😊 <strong>La Joie (al-Faraḥ) :</strong> « Allah se réjouit du repentir de Son serviteur plus que l’un de vous qui retrouve sa monture perdue dans un désert. » (Bukhārī, Muslim).</div>
+        </div>
+        <div class="grid-2">
+            <div class="info-card">
+                <h3>🔭 La vision d’Allah (Ru’yah)</h3>
+                <p>« Ce jour-là, des visages resplendissants qui regarderont leur Seigneur. » (Al-Qiyāmah 22-23). <br> Hadith : « Vous verrez votre Seigneur comme vous voyez la lune par pleine lune. » (Bukhārī, Muslim)</p>
+            </div>
+            <div class="info-card">
+                <h3>📢 La voix divine</h3>
+                <p>Hadith d’Adam : « Allah l’appellera d’une voix… » (Bukhārī, Muslim). La voix d’Allah est entendue ; elle n’est pas semblable aux voix des créatures.</p>
+            </div>
+        </div>
+        <div class="explication">
+            ✨ Ces récits sont pris au sens réel convenant à Allah, sans “comment”. Ahl al-Sunna rejette l’interprétation métaphorique forcée (ta’wīl) qui vide le texte de son sens.
+        </div>
+    </div>
+
+    <!-- PAN 5 : La voie médiane / Synthese -->
+    <div id="tab5" class="tab-pane">
+        <div class="card-theme">
+            <h2>⚖️ Ahl al-Sunna wal-Jamā‘ah : La voie équilibrée</h2>
+            <p><strong>Médiane</strong> entre les Jahmiyya (négateurs) et les Mushabbiha (anthropomorphistes).<br>
+            Médiane entre les Murji’a (excluant les actes de la foi) et les Wa‘īdiyya (menace absolue).<br>
+            Médiane concernant les Compagnons entre les Rawāfiḍ et les Khawārij.</p>
+            <div class="verset">📌 Règle universelle : On affirme tout ce qu’Allah et Son Messager ont affirmé, avec la signification qui convient à Allah, sans Tahrif, Ta‘tīl, Takyīf ni Tamthīl.</div>
+        </div>
+        <div class="grid-2">
+            <div class="info-card">
+                <h3>📜 Citations des imams</h3>
+                <p>Imam Mâlik : « L’istiwâ’ est connu, le comment est inconnu, y croire est une obligation, interroger sur le comment est une innovation. »<br>
+                Imam Ahmad : « Nous croyons aux hadiths des attributs comme ils sont venus, sans ‘comment’. »</p>
+            </div>
+            <div class="info-card">
+                <h3>🧠 Noms & Attributs</h3>
+                <p>Allah possède les noms sublimes (al-Asmā’ al-Ḥusnā) et Ses attributs tels que la Science, la Parole, la Main, le Visage, l’Élévation, le Rire, la Descente — réels, distincts des attributs des créatures.</p>
+            </div>
+        </div>
+        <div class="footnote">
+            🤍 « Rien ne Lui ressemble ; et c’est Lui l’Audient, le Clairvoyant. » (Ash-Shūrā 11) — Cela suffit pour écarter toute comparaison tout en gardant l’affirmation pleine.
+        </div>
+        <div class="verset" style="text-align:center; margin-top:0.8rem;">
+            🌟 <strong>Prier pour la guidance :</strong> « Qu’Allah nous accorde la compréhension saine de Sa religion et la fermeté dans la croyance des pieux prédécesseurs. »
+        </div>
+    </div>
+
+    <div class="footnote" style="border-radius: 0 0 1.5rem 1.5rem; background: #e4d7be;">
+        📚 <strong>Synthèse pédagogique</strong> — D’après le passage de l’auteur (qu’Allah lui fasse miséricorde). Les attributs divins sont une réalité, leur modalité est inconnaissable. Ahl al-Sunna affirme tout ce qui est venu dans le Coran et la Sunna authentique, sans altération ni assimilation. « Al-Istiwâ’ est connu, al-Kayf est inconnu. »
+    </div>
+</div>
+
+<script>
+    // Gestion des onglets
+    const buttons = document.querySelectorAll('.tab-btn');
+    const panes = document.querySelectorAll('.tab-pane');
+
+    function switchTab(tabId) {
+        panes.forEach(pane => {
+            pane.classList.remove('active-pane');
+        });
+        const activePane = document.getElementById(tabId);
+        if(activePane) activePane.classList.add('active-pane');
+        
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.getAttribute('data-tab') === tabId) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+            if(tabId) switchTab(tabId);
+        });
+    });
+
+    // petite fonction annexe copie (optionnel)
+    function addCopyFeature() {
+        const versets = document.querySelectorAll('.verset, .hadith');
+        versets.forEach(el => {
+            if(!el.querySelector('.copy-btn')) {
+                const btn = document.createElement('button');
+                btn.textContent = '📋 copier';
+                btn.className = 'copy-btn';
+                btn.style.marginLeft = '12px';
+                btn.style.fontSize = '0.7rem';
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    let textToCopy = el.innerText.replace('📋 copier', '').trim();
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        btn.textContent = '✓ copié';
+                        setTimeout(() => btn.textContent = '📋 copier', 1200);
+                    }).catch(() => {});
+                });
+                el.appendChild(btn);
+            }
+        });
+    }
+
+    addCopyFeature();
+</script>
+</body>
+</html>
