@@ -1,0 +1,1419 @@
+
+
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les Fondements de l'Adoration — Cours Interactif</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+  /* Dorés adoucis */
+  --gold: #D4B87A;          /* doré plus doux */
+  --gold-light: #E8D5A8;    /* doré très clair */
+  --gold-pale: #F5EFDF;     /* presque blanc cassé */
+  
+  /* Fonds apaisants (beiges/crème au lieu de bleu foncé) */
+  --deep: #F5F2EB;          /* beige très clair (fond principal) */
+  --deep2: #FFFFFF;         /* blanc pur (cartes) */
+  --deep3: #FAF8F4;         /* blanc cassé (alternance) */
+  
+  /* Accents doux */
+  --teal: #8CB3B8;          /* bleu-vert pastel */
+  --teal-light: #B8D4D8;    /* bleu-vert très clair */
+  --cream: #3D3A32;         /* texte foncé sur fond clair */
+  
+  /* Textes */
+  --text: #2C2A25;          /* gris très foncé (bon contraste) */
+  --text-muted: #6B6356;    /* gris-brun discret */
+  
+  /* Accents */
+  --red-accent: #D98A6B;    /* rouge orangé adouci */
+  --green-accent: #7DAB8D;  /* vert sage */
+
+  }
+ 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+  body {
+    background: var(--deep);
+    color: var(--text);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+ 
+  /* ═══ BACKGROUND ═══ */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(201,168,76,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 90%, rgba(42,123,140,0.08) 0%, transparent 60%),
+      repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,168,76,0.015) 40px, rgba(201,168,76,0.015) 80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+ 
+  /* ═══ NAVBAR ═══ */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,27,42,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 64px;
+    overflow-x: auto;
+  }
+  nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: all 0.25s;
+    border: 1px solid transparent;
+  }
+  nav a:hover, nav a.active {
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.25);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold) !important;
+    font-weight: 900;
+    margin-right: 1rem;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+  }
+ 
+  /* ═══ HERO ═══ */
+  .hero {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    overflow: hidden;
+  }
+  .hero-arabic {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--gold-light);
+    opacity: 0;
+    animation: fadeDown 0.8s 0.2s forwards;
+    line-height: 1.6;
+    direction: rtl;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.15;
+    opacity: 0;
+    animation: fadeDown 0.8s 0.5s forwards;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), #E8A84C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+    opacity: 0;
+    animation: fadeDown 0.8s 0.8s forwards;
+  }
+  .hero-divider {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 2rem auto;
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
+  }
+ 
+  /* ═══ SECTION ═══ */
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201,168,76,0.4), transparent);
+  }
+  .section-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+ 
+  /* ═══ FONDEMENTS CARDS ═══ */
+  .fondements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .fondement-card {
+    background: linear-gradient(135deg, var(--deep2), var(--deep3));
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: var(--radius);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+  .fondement-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .fondement-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 70px rgba(201,168,76,0.15);
+    border-color: rgba(201,168,76,0.4);
+  }
+  .fondement-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  }
+  .fondement-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: rgba(201,168,76,0.15);
+    position: absolute;
+    top: 0.5rem; right: 1rem;
+    line-height: 1;
+  }
+  .fondement-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--gold-light);
+    margin-bottom: 0.8rem;
+  }
+  .fondement-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  .badge-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+ 
+  /* ═══ FLASHCARDS ═══ */
+  .flashcards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .flashcard-wrapper {
+    perspective: 1200px;
+    height: 220px;
+    cursor: pointer;
+  }
+  .flashcard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .flashcard-wrapper:hover .flashcard,
+  .flashcard-wrapper.flipped .flashcard {
+    transform: rotateY(180deg);
+  }
+  .flashcard-front, .flashcard-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .flashcard-front {
+    background: linear-gradient(135deg, var(--deep2), var(--deep3));
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+  .flashcard-back {
+    background: linear-gradient(135deg, var(--teal), #1A5C6C);
+    border: 1px solid rgba(42,123,140,0.4);
+    transform: rotateY(180deg);
+  }
+  .fc-category {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+  }
+  .fc-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+  .fc-answer {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: rgba(248,243,232,0.9);
+  }
+  .fc-tap {
+    font-size: 0.7rem;
+    color: rgba(201,168,76,0.6);
+    margin-top: 1rem;
+    letter-spacing: 0.06em;
+  }
+  .fc-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+ 
+  /* Flashcard navigation */
+  .fc-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .fc-btn {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .fc-btn:hover {
+    background: rgba(201,168,76,0.2);
+    border-color: var(--gold);
+  }
+  .fc-counter {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    min-width: 60px;
+    text-align: center;
+  }
+ 
+  /* Flashcard single mode */
+  .fc-single-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .fc-single-wrapper .flashcard-wrapper {
+    height: 280px;
+  }
+ 
+  /* Toggle view buttons */
+  .view-toggle {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .view-btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(201,168,76,0.25);
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .view-btn.active {
+    background: rgba(201,168,76,0.15);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+ 
+  /* ═══ ADORATIONS LIST ═══ */
+  .adorations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.2rem;
+  }
+  .adoration-item {
+    background: var(--deep2);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: box-shadow 0.3s;
+  }
+  .adoration-item.visible {
+    animation: fadeUp 0.5s forwards;
+  }
+  .adoration-item:hover {
+    box-shadow: 0 10px 40px rgba(201,168,76,0.1);
+  }
+  .adoration-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .adoration-emoji {
+    font-size: 1.6rem;
+    width: 40px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .adoration-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--cream);
+    flex: 1;
+  }
+  .adoration-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    direction: rtl;
+  }
+  .adoration-chevron {
+    color: var(--gold);
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+  }
+  .adoration-item.open .adoration-chevron { transform: rotate(180deg); }
+  .adoration-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .adoration-item.open .adoration-body { max-height: 600px; }
+  .adoration-content {
+    padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding-top: 1.2rem;
+  }
+  .adoration-content p {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+  }
+  .adoration-content p:last-child { margin-bottom: 0; }
+  .ayah-box {
+    background: rgba(201,168,76,0.06);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1rem;
+    margin: 0.8rem 0;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--cream);
+  }
+  .ayah-ref {
+    font-size: 0.75rem;
+    color: var(--gold);
+    margin-top: 0.4rem;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .arabic-verse {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    direction: rtl;
+    text-align: right;
+    color: var(--gold-light);
+    display: block;
+    margin-top: 0.6rem;
+    line-height: 1.8;
+  }
+  .type-badge {
+    display: inline-block;
+    background: rgba(74,140,106,0.15);
+    border: 1px solid rgba(74,140,106,0.35);
+    color: #6ABDA0;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 5px;
+    margin: 0.3rem 0.3rem 0.3rem 0;
+  }
+  .type-badge.warning {
+    background: rgba(196,92,58,0.15);
+    border-color: rgba(196,92,58,0.35);
+    color: #E08060;
+  }
+ 
+  /* ═══ MINDMAP ═══ */
+  #mindmap-container {
+    width: 100%;
+    height: 680px;
+    background: var(--deep2);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+  }
+  #mindmap-svg {
+    width: 100%;
+    height: 100%;
+  }
+  .mm-hint {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.8rem;
+  }
+ 
+  /* ═══ PILIERS ═══ */
+  .piliers-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+  }
+  .pilier {
+    width: 200px;
+    text-align: center;
+    opacity: 0;
+  }
+  .pilier.visible {
+    animation: fadeUp 0.6s forwards;
+  }
+  .pilier:nth-child(2).visible { animation-delay: 0.2s; }
+  .pilier:nth-child(3).visible { animation-delay: 0.4s; }
+  .pilier-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+    position: relative;
+    font-size: 2.5rem;
+  }
+  .pilier-circle::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    padding: 4px;
+    background: conic-gradient(var(--gold), var(--teal), var(--gold));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: spinBorder 8s linear infinite;
+  }
+  .pilier-circle-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--deep2);
+    font-size: 2.5rem;
+  }
+  .pilier h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+  .pilier p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .piliers-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .piliers-line {
+    flex: 1;
+    min-width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+  }
+ 
+  /* ═══ QUIZZ ═══ */
+  .quiz-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .quiz-card {
+    background: var(--deep2);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+  }
+  .quiz-progress {
+    display: flex;
+    gap: 0.3rem;
+    margin-bottom: 1.5rem;
+  }
+  .quiz-dot {
+    flex: 1;
+    height: 4px;
+    background: rgba(201,168,76,0.15);
+    border-radius: 2px;
+    transition: background 0.4s;
+  }
+  .quiz-dot.done { background: var(--gold); }
+  .quiz-dot.current { background: var(--gold-light); animation: pulse 1.2s infinite; }
+  .quiz-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--cream);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  .quiz-options {
+    display: grid;
+    gap: 0.8rem;
+  }
+  .quiz-opt {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 10px;
+    padding: 1rem 1.3rem;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.92rem;
+    color: var(--text);
+    transition: all 0.25s;
+    font-family: 'Source Sans 3', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .quiz-opt:hover:not(:disabled) {
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.35);
+    transform: translateX(4px);
+  }
+  .quiz-opt.correct {
+    background: rgba(74,140,106,0.2);
+    border-color: #4A8C6A;
+    color: #8AD4A8;
+  }
+  .quiz-opt.wrong {
+    background: rgba(196,92,58,0.2);
+    border-color: var(--red-accent);
+    color: #E08060;
+  }
+  .opt-letter {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .quiz-feedback {
+    margin-top: 1.2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    display: none;
+  }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.good {
+    background: rgba(74,140,106,0.15);
+    border: 1px solid rgba(74,140,106,0.3);
+    color: #8AD4A8;
+  }
+  .quiz-feedback.bad {
+    background: rgba(196,92,58,0.15);
+    border: 1px solid rgba(196,92,58,0.3);
+    color: #E08060;
+  }
+  .quiz-next-btn {
+    margin-top: 1.5rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+    border-radius: 10px;
+    padding: 0.9rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--deep);
+    cursor: pointer;
+    display: none;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: all 0.25s;
+  }
+  .quiz-next-btn.show { display: inline-block; }
+  .quiz-next-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.3); }
+  .quiz-result {
+    text-align: center;
+    padding: 2rem;
+  }
+  .quiz-score {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .quiz-result-msg {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin: 1rem 0 2rem;
+  }
+ 
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes spinBorder {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+ 
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 600px) {
+    .flashcards-grid { grid-template-columns: 1fr; }
+    .adorations-grid { grid-template-columns: 1fr; }
+    .piliers-wrapper { gap: 1rem; }
+  }
+ 
+  /* ═══ SCROLLBAR ═══ */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--deep); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+ 
+  /* ═══ MM NODE STYLES ═══ */
+  .mm-node { cursor: pointer; transition: all 0.3s; }
+  .mm-node:hover circle, .mm-node:hover ellipse { filter: brightness(1.3); }
+  .mm-node text { pointer-events: none; }
+  .mm-tooltip {
+    position: absolute;
+    background: var(--deep3);
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    padding: 1rem;
+    max-width: 260px;
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.6;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s;
+    box-shadow: var(--shadow);
+  }
+  .mm-tooltip.show { opacity: 1; }
+  .mm-tooltip-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+</style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">الأصول الثلاثة</a>
+  <a href="#fondements" onclick="scrollTo('#fondements')">Fondements</a>
+  <a href="#adorations" onclick="scrollTo('#adorations')">Adorations</a>
+  <a href="#piliers" onclick="scrollTo('#piliers')">Piliers</a>
+  <a href="#flashcards" onclick="scrollTo('#flashcards')">Flashcards</a>
+  <a href="#mindmap" onclick="scrollTo('#mindmap')">MindMap</a>
+  <a href="#quiz" onclick="scrollTo('#quiz')">Quiz</a>
+</nav>
+ 
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-arabic">وَأَنَّ الْمَسَاجِدَ لِلَّهِ فَلَا تَدْعُوا مَعَ اللَّهِ أَحَدًا</div>
+  <h1>Les Fondements de l'Adoration</h1>
+  <p class="hero-sub">Cours interactif d'apprentissage — Al-Ousoul ath-Thalatha</p>
+  <div class="hero-divider"></div>
+</div>
+ 
+<!-- SECTION 1 : FONDEMENTS -->
+<section id="fondements">
+  <div class="section-title">
+    <div class="section-icon">①</div>
+    Les Trois Fondements
+  </div>
+  <div class="fondements-grid">
+    <div class="fondement-card" style="transition-delay:0s">
+      <div class="fondement-num">01</div>
+      <span class="badge-icon">🌟</span>
+      <h3>Connaître Son Seigneur</h3>
+      <p>L'unicité de la Seigneurie (Rubûbiyyah) — Allah seul est le Créateur, le Maître et le Souverain de tout ce qui existe.</p>
+      <div class="ayah-box">
+        « Celui qui a créé ces choses est le Seul digne d'adoration. »
+        <div class="ayah-ref">— Ibn Kathîr رحمه الله</div>
+      </div>
+    </div>
+    <div class="fondement-card" style="transition-delay:0.15s">
+      <div class="fondement-num">02</div>
+      <span class="badge-icon">📖</span>
+      <h3>Connaître Sa Religion</h3>
+      <p>L'Islam dans sa totalité : la Soumission, la Foi et la Bienfaisance — trois niveaux d'une religion complète et parfaite.</p>
+      <div class="ayah-box">
+        Toute adoration doit être exclusive à Allah et conforme à la Sunna du Prophète ﷺ.
+      </div>
+    </div>
+    <div class="fondement-card" style="transition-delay:0.3s">
+      <div class="fondement-num">03</div>
+      <span class="badge-icon">🌙</span>
+      <h3>Connaître Son Prophète ﷺ</h3>
+      <p>Muhammad ﷺ, le Messager d'Allah — connaître sa biographie, sa mission et suivre son exemple dans tous les actes d'adoration.</p>
+      <div class="ayah-box">
+        L'adoration n'est valide que si elle est conforme au modèle prophétique.
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- NOTE SEIGNEUR VS DIVINITE -->
+<section>
+  <div class="section-title">
+    <div class="section-icon">⚡</div>
+    Point Clé : Seigneur ≠ Divinité
+  </div>
+  <div style="background:var(--deep2);border:1px solid rgba(201,168,76,0.2);border-radius:var(--radius);padding:2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);margin-bottom:0.8rem">رب — Le Seigneur</div>
+      <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.75">Celui qui possède, crée et dispose de toutes choses. L'unicité de la Seigneurie signifie que seul Allah crée, sustente et gouverne l'univers.</p>
+    </div>
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--teal-light);margin-bottom:0.8rem">إله — La Divinité</div>
+      <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.75">Celui qui est digne d'être adoré. L'unicité de la Divinité signifie que seul Allah mérite toute forme d'adoration du cœur et du corps.</p>
+    </div>
+    <div style="grid-column:1/-1;background:rgba(201,168,76,0.06);border-radius:10px;padding:1.2rem;border-left:3px solid var(--gold)">
+      <strong style="color:var(--gold-light)">Règle fondamentale :</strong>
+      <span style="font-size:0.9rem;color:var(--text-muted)"> L'unicité de la Seigneurie implique nécessairement l'unicité de l'Adoration, et vice versa. Ces deux aspects sont indissociables.</span>
+    </div>
+  </div>
+</section>
+ 
+<!-- SECTION 2 : PILIERS -->
+<section id="piliers">
+  <div class="section-title">
+    <div class="section-icon">🏛</div>
+    Les Trois Piliers de l'Adoration
+  </div>
+  <div class="piliers-wrapper">
+    <div class="pilier">
+      <div class="pilier-circle">
+        <div class="pilier-circle-inner">❤️</div>
+      </div>
+      <h4>L'Amour</h4>
+      <p>Aimer Allah par-dessus toute chose. L'adoration naît de l'amour pur envers le Créateur.</p>
+    </div>
+    <div style="display:flex;align-items:center;color:var(--gold);font-size:1.5rem;opacity:0.4">⟺</div>
+    <div class="pilier">
+      <div class="pilier-circle">
+        <div class="pilier-circle-inner" style="animation: float 3s ease-in-out 0.5s infinite">🌿</div>
+      </div>
+      <h4>L'Espoir</h4>
+      <p>Espérer la récompense d'Allah, Son Paradis et Sa Miséricorde infinie.</p>
+    </div>
+    <div style="display:flex;align-items:center;color:var(--gold);font-size:1.5rem;opacity:0.4">⟺</div>
+    <div class="pilier">
+      <div class="pilier-circle">
+        <div class="pilier-circle-inner" style="animation: float 3s ease-in-out 1s infinite">⚡</div>
+      </div>
+      <h4>La Crainte</h4>
+      <p>Craindre le châtiment d'Allah. La crainte est une peur accompagnée de science.</p>
+    </div>
+  </div>
+  <div style="text-align:center;color:var(--text-muted);font-size:0.85rem;font-style:italic;margin-top:1rem">
+    « Comme les deux ailes d'un oiseau — aucune ne peut voler sans l'autre. »
+  </div>
+</section>
+ 
+<!-- SECTION 3 : ADORATIONS ACCORDION -->
+<section id="adorations">
+  <div class="section-title">
+    <div class="section-icon">🕌</div>
+    Les Formes d'Adoration — Détaillées
+  </div>
+  <div class="adorations-grid" id="adorationsGrid"></div>
+</section>
+ 
+<!-- SECTION 4 : FLASHCARDS -->
+<section id="flashcards">
+  <div class="section-title">
+    <div class="section-icon">🃏</div>
+    Flashcards — Révision Interactive
+  </div>
+  <div class="view-toggle">
+    <button class="view-btn active" onclick="setFcView('grid')">📋 Grille</button>
+    <button class="view-btn" onclick="setFcView('single')">🎯 Une par une</button>
+  </div>
+  <div id="fcGridView" class="flashcards-grid"></div>
+  <div id="fcSingleView" style="display:none">
+    <div class="fc-single-wrapper">
+      <div class="flashcard-wrapper" id="fcSingle" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard">
+          <div class="flashcard-front" id="fcFront"></div>
+          <div class="flashcard-back" id="fcBack"></div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-nav">
+      <button class="fc-btn" onclick="fcPrev()">← Précédent</button>
+      <div class="fc-counter" id="fcCounter">1 / 12</div>
+      <button class="fc-btn" onclick="fcNext()">Suivant →</button>
+    </div>
+  </div>
+</section>
+ 
+<!-- SECTION 5 : MINDMAP -->
+<section id="mindmap">
+  <div class="section-title">
+    <div class="section-icon">🗺</div>
+    Carte Mentale Interactive
+  </div>
+  <div id="mindmap-container">
+    <svg id="mindmap-svg" viewBox="0 0 1100 650" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="mm-tooltip" id="mmTooltip"></div>
+  </div>
+  <p class="mm-hint">💡 Survolez ou cliquez sur un nœud pour afficher les détails</p>
+</section>
+ 
+<!-- SECTION 6 : QUIZ -->
+<section id="quiz">
+  <div class="section-title">
+    <div class="section-icon">📝</div>
+    Quiz d'Auto-Évaluation
+  </div>
+  <div class="quiz-wrapper">
+    <div class="quiz-card" id="quizCard"></div>
+  </div>
+</section>
+ 
+<div style="height:4rem"></div>
+ 
+<script>
+// ══════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════
+const adorations = [
+  {
+    name: "L'Invocation", arabic: "الدُّعَاء", emoji: "🤲", key: "du'â",
+    body: `<p>L'invocation se divise en deux types :</p>
+    <span class="type-badge">Invocation de demande</span><span class="type-badge">Invocation d'adoration</span>
+    <p>L'invocation de demande consiste à implorer son Seigneur (ex. : « Ô Allah, pardonne mes péchés »). L'invocation d'adoration englobe tous les actes d'adoration — prière, jeûne, pèlerinage…</p>
+    <div class="ayah-box">« Invoquez-Moi, Je vous exaucerai. Ceux qui se refusent à M'adorer entreront dans l'Enfer, humiliés. »<div class="ayah-ref">Sourate Ghâfir, v. 60</div></div>
+    <p><strong style="color:var(--gold-light)">Hadith :</strong> « L'invocation, c'est l'adoration. »</p>
+    <p>⚠️ Invoquer un mort, une statue, un arbre = associer à Allah (shirk).</p>`
+  },
+  {
+    name: "La Peur", arabic: "الخَوْف", emoji: "⚡", key: "khawf",
+    body: `<p>La peur est un acte majeur d'adoration du cœur. Elle se divise en <strong style="color:var(--gold-light)">quatre types</strong> :</p>
+    <span class="type-badge warning">Peur secrète — Shirk majeur</span>
+    <span class="type-badge warning">Peur mondaine — Interdite</span>
+    <span class="type-badge">Peur naturelle — Permise</span>
+    <span class="type-badge">Peur d'Allah — Légiférée</span>
+    <div class="ayah-box">« N'ayez donc pas peur d'eux. Mais ayez peur de Moi, si vous êtes croyants. »<div class="ayah-ref">Sourate Âl 'Imrân, v. 175</div></div>
+    <p>La peur d'Allah doit être accompagnée d'espoir — sans quoi on tomberait dans le désespoir, interdit en Islam.</p>`
+  },
+  {
+    name: "L'Espoir", arabic: "الرَّجَاء", emoji: "🌟", key: "raja",
+    body: `<p>L'espoir est l'aspiration à la récompense d'Allah, accompagnée de bonne opinion envers Lui. Il existe <strong style="color:var(--gold-light)">trois sortes d'espoir</strong> selon Ibn Al-Qayyim :</p>
+    <span class="type-badge">Espoir du pieux — Louable</span>
+    <span class="type-badge">Espoir du repentant — Louable</span>
+    <span class="type-badge warning">Espoir du négligent — Blâmable</span>
+    <div class="ayah-box">« Quiconque espère rencontrer son Seigneur, qu'il fasse de bonnes actions. »<div class="ayah-ref">Sourate Al-Kahf, v. 110</div></div>
+    <p>L'espoir blâmable = prétendre espérer Allah tout en délaissant les obligations et commettant les interdits.</p>`
+  },
+  {
+    name: "La Confiance", arabic: "التَّوَكُّل", emoji: "🛡️", key: "tawakkul",
+    body: `<p>La confiance en Allah = mettre sa confiance totale en Lui après avoir accompli les causes nécessaires.</p>
+    <span class="type-badge">Confiance totale en Allah — Obligatoire</span>
+    <span class="type-badge warning">Confiance en un mort — Shirk majeur</span>
+    <span class="type-badge warning">Confiance totale en un roi — Shirk mineur</span>
+    <div class="ayah-box">« Et quiconque place sa confiance en Allah, Il lui suffit. »<div class="ayah-ref">Sourate At-Talâq, v. 3</div></div>
+    <p>La délégation de responsabilité (tawkil) à une personne vivante et capable est permise — ne pas confondre avec at-tawakkul.</p>`
+  },
+  {
+    name: "Le Désir", arabic: "الرَّغْبَة", emoji: "🌱", key: "raghba",
+    body: `<p>Le désir est un espoir qui s'est mis en mouvement — l'espoir accompagné d'action concrète.</p>
+    <p><strong style="color:var(--gold-light)">Distinction :</strong></p>
+    <p>• L'Espoir = direction du regard vers un objectif<br>• Le Désir (Raghbah) = le premier pas fait vers cet objectif</p>
+    <div class="ayah-box">« Ils concouraient au bien et Nous invoquaient par amour et par crainte. »<div class="ayah-ref">Sourate Al-Anbiyâ', v. 90</div></div>`
+  },
+  {
+    name: "L'Effroi", arabic: "الرَّهْبَة", emoji: "🌊", key: "rahba",
+    body: `<p>L'effroi est la peur accompagnée d'action — se précipiter dans les actes d'obéissance par crainte du châtiment d'Allah.</p>
+    <p>Avec le désir et l'humilité, ces trois caractéristiques décrivent ceux qui se précipitent vers le bien.</p>
+    <div class="ayah-box">« Ils concouraient au bien et Nous invoquaient par amour et par crainte (rahaban). »<div class="ayah-ref">Sourate Al-Anbiyâ', v. 90</div></div>`
+  },
+  {
+    name: "L'Humilité", arabic: "الخُشُوع", emoji: "🙏", key: "khuchu",
+    body: `<p>La servitude résultant de la grandeur d'Allah — soumission aux décrets naturels et religieux d'Allah.</p>
+    <div class="ayah-box">Ibn Taymiyyah رحمه الله : « L'humilité c'est se soumettre à Allah avec la sérénité et l'apaisement du cœur et du corps. »</div>
+    <p>C'est l'apaisement complet de l'être — intérieur (cœur) et extérieur (membres) — devant la Majesté d'Allah.</p>`
+  },
+  {
+    name: "La Crainte", arabic: "الخَشْيَة", emoji: "📚", key: "khachya",
+    body: `<p>La crainte est une peur accompagnée de science — différente de la peur ordinaire.</p>
+    <div class="ayah-box">« Parmi ses serviteurs, seuls les savants craignent Allah. »<div class="ayah-ref">Sourate Fâtir, v. 28</div><span class="arabic-verse">إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ</span></div>
+    <p>Plus tu connais Allah à travers Ses noms et attributs, plus ta crainte envers Lui grandit. Les savants sont ceux qui Le craignent le plus.</p>`
+  },
+  {
+    name: "Le Retour vers Allah", arabic: "الإِنَابَة", emoji: "↩️", key: "inaba",
+    body: `<p>Le retour vers Allah comprend <strong style="color:var(--gold-light)">quatre aspects</strong> :</p>
+    <span class="type-badge">Amour d'Allah</span>
+    <span class="type-badge">Humilité envers Allah</span>
+    <span class="type-badge">Revenir à Allah</span>
+    <span class="type-badge">S'éloigner des interdits</span>
+    <p><strong style="color:var(--gold-light)">Différence avec le repentir :</strong> Le repentir = s'arrêter et faire demi-tour. Le retour vers Allah = faire demi-tour ET multiplier les actes de bien en marchant activement sur le bon chemin.</p>`
+  },
+  {
+    name: "La Demande d'Aide", arabic: "الاسْتِعَانَة", emoji: "🤝", key: "istiana",
+    body: `<p>Demander humblement l'aide de son Seigneur seul.</p>
+    <div class="ayah-box">« C'est Toi seul que nous adorons, et c'est Toi seul dont nous implorons le secours. »<div class="ayah-ref">Sourate Al-Fâtiha, v. 5</div></div>
+    <p>Il est permis de demander de l'aide à une personne sous <strong style="color:var(--gold-light)">quatre conditions</strong> : vivante • présente • capable • considérée comme une cause (et non la cause réelle).</p>
+    <p>La confiance en Allah est d'un niveau supérieur à la demande d'aide.</p>`
+  },
+  {
+    name: "La Demande de Protection", arabic: "الاسْتِعَاذَة", emoji: "🛡", key: "istiaza",
+    body: `<p>Types de demande de protection :</p>
+    <span class="type-badge">Auprès d'Allah — Permis</span>
+    <span class="type-badge">Auprès des attributs d'Allah — Permis</span>
+    <span class="type-badge warning">Auprès des morts/djinns — Shirk majeur</span>
+    <div class="ayah-box">« Dis : je cherche protection auprès du Seigneur de l'aube naissante. »<div class="ayah-ref">Sourate Al-Falaq, v. 1</div></div>`
+  },
+  {
+    name: "Le Sacrifice", arabic: "الذَّبْح", emoji: "🐑", key: "dabh",
+    body: `<p>Quatre types de sacrifice :</p>
+    <span class="type-badge">Pour Allah (Aïd, Aqiqa) — Adoration</span>
+    <span class="type-badge warning">Pour les morts/djinns — Shirk majeur</span>
+    <span class="type-badge">Pour les invités — Recommandé</span>
+    <span class="type-badge">Pour la consommation — Permis</span>
+    <div class="ayah-box">« Ma prière, mes actes de dévotion, ma vie et ma mort appartiennent à Allah. »<div class="ayah-ref">Sourate Al-An'âm, v. 162-163</div></div>
+    <p>Hadith : « Qu'Allah maudisse celui qui sacrifie pour un autre qu'Allah. » (Muslim)</p>`
+  },
+  {
+    name: "Le Vœu", arabic: "النَّذْر", emoji: "📜", key: "nadr",
+    body: `<p>Le vœu = s'obliger à accomplir quelque chose qui n'est pas initialement obligatoire.</p>
+    <span class="type-badge">Vœu absolu d'obéissance — Devient obligatoire</span>
+    <span class="type-badge warning">Vœu conditionnel — Détestable (makrouh)</span>
+    <span class="type-badge warning">Vœu de désobéissance — Interdit</span>
+    <div class="ayah-box">« Ils accomplissent leurs vœux et ils redoutent un jour dont le mal s'étendra partout. »<div class="ayah-ref">Sourate Al-Insân, v. 7</div></div>
+    <p>Hadith : « Le vœu n'écarte rien du destin, mais on l'extrait ainsi de l'avare. » (Bukhâri & Muslim)</p>`
+  },
+  {
+    name: "La Demande de Secours", arabic: "الاسْتِغَاثَة", emoji: "🆘", key: "istighatha",
+    body: `<p>La demande de secours = implorer une aide urgente pour être sauvé d'un danger.</p>
+    <div class="ayah-box">« Quand vous imploriez le secours de votre Seigneur et qu'il vous exauça aussitôt. »<div class="ayah-ref">Sourate Al-Anfâl, v. 9</div></div>
+    <span class="type-badge">À une personne vivante, présente, capable — Permis</span>
+    <span class="type-badge warning">À un mort ou incapable — Shirk majeur</span>
+    <p>Toute demande de secours est une forme d'adoration. La diriger vers autre qu'Allah (dans les cas interdits) est du polythéisme.</p>`
+  },
+];
+ 
+const flashcardsData = [
+  { cat: "Fondements", q: "Quels sont les trois fondements que tout musulman doit connaître ?", a: "1. Connaître Son Seigneur (Allah)\n2. Connaître Sa Religion (l'Islam)\n3. Connaître Son Prophète (Muhammad ﷺ)", icon: "📚" },
+  { cat: "Adoration", q: "Quelle est la définition linguistique de l'adoration ?", a: "Un chemin aplani. Au sens religieux : tout acte et parole, visible ou caché, qu'Allah aime et agrée.", icon: "🕌" },
+  { cat: "Piliers", q: "Sur quels trois piliers repose l'adoration ?", a: "L'Amour ❤️, la Crainte ⚡ et l'Espoir 🌿 — ces trois éléments doivent être réunis pour que l'adoration soit valide.", icon: "🏛" },
+  { cat: "Peur", q: "Quel type de peur constitue du polythéisme (shirk) ?", a: "La peur secrète : craindre un mort ou une idole en croyant qu'ils peuvent nuire. C'est du shirk car on leur attribue un pouvoir réservé à Allah.", icon: "⚡" },
+  { cat: "Espoir", q: "Quel est l'espoir blâmable selon Ibn Al-Qayyim ?", a: "Espérer le pardon d'Allah tout en délaissant les obligations et en commettant les interdits. Le vrai espoir est toujours accompagné d'actes.", icon: "🌟" },
+  { cat: "Invocation", q: "Sous quelles 4 conditions peut-on demander de l'aide à une personne ?", a: "1. Être vivante\n2. Être présente\n3. Être capable\n4. Être considérée uniquement comme une cause (non la cause réelle)", icon: "🤲" },
+  { cat: "Confiance", q: "Quelle est la différence entre at-tawakkul et at-tawkîl ?", a: "At-tawakkul = confiance totale en Allah dans le cœur après avoir agi. At-tawkîl = délégation de responsabilité à une personne vivante capable — c'est permis.", icon: "🛡️" },
+  { cat: "Crainte", q: "Comment Ibn Taymiyyah définit-il al-khachyah ?", a: "Une peur basée sur la connaissance de l'Être craint. Plus on connaît Allah par Ses noms et attributs, plus la crainte grandit. Les savants sont les plus craignants.", icon: "📚" },
+  { cat: "Sacrifice", q: "Quel jugement a le sacrifice accompli pour les morts ou les djinns ?", a: "C'est du Grand Shirk (association majeure). La viande est considérée comme maytah (cadavre) et est interdite. Le Prophète ﷺ a maudit celui qui sacrifie pour autre qu'Allah.", icon: "🐑" },
+  { cat: "Soumission", q: "Quelle est la différence entre soumission générale et soumission spécifique ?", a: "Soumission générale : toutes les créatures sont soumises à Allah (Maryam, 93). Soumission spécifique : concerne les croyants obéissants (Al-Furqan, 63).", icon: "🙏" },
+  { cat: "Retour", q: "Quelle est la différence entre at-tawbah (repentir) et al-inâbah (retour vers Allah) ?", a: "At-tawbah = regretter et s'arrêter. Al-inâbah = au-delà du repentir, en ajoutant des actes de bien concrets et un rapprochement actif vers Allah.", icon: "↩️" },
+  { cat: "Vœu", q: "Qu'est-ce qu'un vœu conditionnel (mou'allaq) et quel est son jugement ?", a: "C'est lier un acte d'adoration à l'obtention d'un bienfait : « Si je réussis, je jeûnerai ». Jugement : détestable (makrouh) car on semble négocier avec Allah.", icon: "📜" },
+];
+ 
+const quizData = [
+  {
+    q: "Quels sont les trois fondements de l'adoration du cœur ?",
+    opts: ["L'amour, la peur, la gratitude", "L'amour, l'espoir, la crainte", "La foi, l'espoir, la patience", "L'humilité, l'amour, le jeûne"],
+    ans: 1,
+    fb: "✅ Exactement ! Les trois piliers sont l'Amour (hubb), l'Espoir (rajâ') et la Crainte (khawf). Chaque acte d'adoration repose sur ces trois fondements."
+  },
+  {
+    q: "Quel est le jugement de celui qui voue une forme d'adoration à autre qu'Allah ?",
+    opts: ["C'est un péché mineur", "C'est interdit mais pardonnable", "C'est un polythéiste mécréant (mushrik kâfir)", "C'est simplement déconseillé"],
+    ans: 2,
+    fb: "✅ Correct ! Allah dit : « Quiconque adore avec Allah une autre divinité... les mécréants ne réussissent pas. » (Al-Mu'minûn, 117)"
+  },
+  {
+    q: "La peur mondaine (commettre un interdit par peur des gens) est :",
+    opts: ["Du shirk majeur", "Permise sous conditions", "Interdite mais pas du shirk", "Recommandée en cas de danger"],
+    ans: 2,
+    fb: "✅ Bien répondu ! La peur mondaine est interdite mais n'atteint pas le degré du polythéisme. Seule la peur secrète (croire qu'un mort peut nuire) est du shirk."
+  },
+  {
+    q: "Selon Ibn Al-Qayyim, combien de sortes d'espoir existe-t-il ?",
+    opts: ["Deux (louable et blâmable)", "Trois (deux louables, une blâmable)", "Quatre selon les niveaux de foi", "Une seule, toujours louable"],
+    ans: 1,
+    fb: "✅ Parfait ! Ibn Al-Qayyim distingue : 1) L'espoir du pieux qui agit 2) L'espoir du repentant — tous deux louables. 3) L'espoir du négligent qui n'agit pas — blâmable."
+  },
+  {
+    q: "La différence entre at-tawakkul et at-tawkîl est :",
+    opts: ["Ce sont deux synonymes", "At-tawkkul = confiance en Allah, at-tawkîl = délégation permise à une personne", "At-tawkîl est du shirk mineur", "At-tawakkul est interdit en dehors de la prière"],
+    ans: 1,
+    fb: "✅ Exact ! La confiance en Allah (tawakkul) est un acte du cœur obligatoire. La délégation (tawkil) à une personne vivante et capable est permise — le Prophète ﷺ l'a pratiquée."
+  },
+  {
+    q: "Sous quelles conditions peut-on demander de l'aide à une personne ?",
+    opts: ["Toujours permis, sans restriction", "Elle doit être connue et de confiance", "Vivante, présente, capable, considérée comme une cause", "Uniquement lors du pèlerinage"],
+    ans: 2,
+    fb: "✅ Correct ! Les 4 conditions : Vivante ✓ Présente ✓ Capable ✓ Considérée uniquement comme une cause (et non la cause ultime qui reste Allah)."
+  },
+  {
+    q: "Quel est le statut de la viande d'un animal sacrifié pour un djinn ou un mort ?",
+    opts: ["Halal si on a prononcé le nom d'Allah", "Makrouh (détestable) mais consommable", "Maytah (cadavre) — interdite à la consommation", "Permise en cas de nécessité"],
+    ans: 2,
+    fb: "✅ Exact ! Ce sacrifice est du Grand Shirk. La viande est considérée comme maytah et donc haram. Le Prophète ﷺ a dit : « Qu'Allah maudisse celui qui sacrifie pour autre qu'Allah. »"
+  },
+];
+ 
+// ══════════════════════════════════════════════
+// SCROLL ANIMATION
+// ══════════════════════════════════════════════
+function scrollTo(selector) {
+  const el = document.querySelector(selector);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+ 
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fondement-card, .pilier, .adoration-item').forEach(el => observer.observe(el));
+ 
+// ══════════════════════════════════════════════
+// BUILD ADORATIONS ACCORDION
+// ══════════════════════════════════════════════
+function buildAdorations() {
+  const grid = document.getElementById('adorationsGrid');
+  adorations.forEach((a, i) => {
+    const div = document.createElement('div');
+    div.className = 'adoration-item';
+    div.style.transitionDelay = (i * 0.04) + 's';
+    div.innerHTML = `
+      <div class="adoration-header" onclick="toggleAdoration(this)">
+        <div class="adoration-emoji">${a.emoji}</div>
+        <div>
+          <div class="adoration-name">${a.name}</div>
+          <div class="adoration-arabic">${a.arabic}</div>
+        </div>
+        <div class="adoration-chevron">▼</div>
+      </div>
+      <div class="adoration-body">
+        <div class="adoration-content">${a.body}</div>
+      </div>`;
+    grid.appendChild(div);
+    observer.observe(div);
+  });
+}
+function toggleAdoration(header) {
+  const item = header.parentElement;
+  item.classList.toggle('open');
+}
+buildAdorations();
+ 
+// ══════════════════════════════════════════════
+// BUILD FLASHCARDS
+// ══════════════════════════════════════════════
+function buildFlashcardsGrid() {
+  const grid = document.getElementById('fcGridView');
+  flashcardsData.forEach((fc, i) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'flashcard-wrapper';
+    wrapper.onclick = () => wrapper.classList.toggle('flipped');
+    wrapper.innerHTML = `
+      <div class="flashcard">
+        <div class="flashcard-front">
+          <div class="fc-category">${fc.cat}</div>
+          <div class="fc-icon">${fc.icon}</div>
+          <div class="fc-question">${fc.q}</div>
+          <div class="fc-tap">→ Survolez pour la réponse</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="fc-icon">${fc.icon}</div>
+          <div class="fc-answer" style="white-space:pre-line">${fc.a}</div>
+        </div>
+      </div>`;
+    grid.appendChild(wrapper);
+  });
+}
+buildFlashcardsGrid();
+ 
+let fcIndex = 0;
+function updateFcSingle() {
+  const fc = flashcardsData[fcIndex];
+  const front = document.getElementById('fcFront');
+  const back = document.getElementById('fcBack');
+  const single = document.getElementById('fcSingle');
+  single.classList.remove('flipped');
+  setTimeout(() => {
+    front.innerHTML = `<div class="fc-category">${fc.cat}</div><div class="fc-icon">${fc.icon}</div><div class="fc-question">${fc.q}</div><div class="fc-tap">→ Cliquez pour la réponse</div>`;
+    back.innerHTML = `<div class="fc-icon">${fc.icon}</div><div class="fc-answer" style="white-space:pre-line">${fc.a}</div>`;
+    document.getElementById('fcCounter').textContent = `${fcIndex+1} / ${flashcardsData.length}`;
+  }, 50);
+}
+function fcNext() { fcIndex = (fcIndex + 1) % flashcardsData.length; updateFcSingle(); }
+function fcPrev() { fcIndex = (fcIndex - 1 + flashcardsData.length) % flashcardsData.length; updateFcSingle(); }
+function setFcView(v) {
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  if (v === 'grid') {
+    document.getElementById('fcGridView').style.display = 'grid';
+    document.getElementById('fcSingleView').style.display = 'none';
+  } else {
+    document.getElementById('fcGridView').style.display = 'none';
+    document.getElementById('fcSingleView').style.display = 'block';
+    updateFcSingle();
+  }
+}
+ 
+// ══════════════════════════════════════════════
+// MINDMAP
+// ══════════════════════════════════════════════
+function buildMindmap() {
+  const svg = document.getElementById('mindmap-svg');
+  const tooltip = document.getElementById('mmTooltip');
+  const W = 1100, H = 650, cx = 550, cy = 325;
+ 
+  const nodes = [
+    // center
+    { id: 0, x: cx, y: cy, r: 58, label: "الأصول", sub: "Les Fondements", color: "#C9A84C", stroke: "#E8C96A", textColor: "#0D1B2A", info: "Les trois fondements que tout musulman doit connaître :\n• Son Seigneur (Allah)\n• Sa Religion (l'Islam)\n• Son Prophète (Muhammad ﷺ)" },
+    // level 1 branches
+    { id: 1, x: cx-300, y: cy-160, r: 46, label: "الرب", sub: "Seigneur", color: "#2A7B8C", stroke: "#3A9BAC", textColor: "#F5E8C0", info: "Unicité de la Seigneurie\nAllah est le seul Créateur, Souverain et Maître de tout ce qui existe." },
+    { id: 2, x: cx, y: cy-200, r: 46, label: "الدين", sub: "Religion", color: "#2A7B8C", stroke: "#3A9BAC", textColor: "#F5E8C0", info: "L'Islam, l'Imân, l'Ihsân\nTrois niveaux de la religion complète." },
+    { id: 3, x: cx+300, y: cy-160, r: 46, label: "النبي ﷺ", sub: "Prophète", color: "#2A7B8C", stroke: "#3A9BAC", textColor: "#F5E8C0", info: "Muhammad ﷺ\nConnaître sa mission et suivre son modèle dans toute adoration." },
+    { id: 4, x: cx-330, y: cy+100, r: 44, label: "العبادة", sub: "Adoration", color: "#8C5A2A", stroke: "#C9A84C", textColor: "#F5E8C0", info: "Tout acte et parole, visible ou caché, qu'Allah aime et agrée.\n3 piliers : Amour, Crainte, Espoir." },
+    { id: 5, x: cx+330, y: cy+100, r: 44, label: "الشرك", sub: "Polythéisme", color: "#8C2A2A", stroke: "#C45C3A", textColor: "#F5E8C0", info: "Diriger une adoration vers autre qu'Allah.\nLe Grand Shirk : sortir de l'Islam.\nLe Shirk mineur : péché grave mais pas sortie de l'Islam." },
+    // level 2 adorations (around adoration node)
+    { id: 6, x: cx-520, y: cy-100, r: 32, label: "الدعاء", sub: "Invocation", color: "#1E4A5C", stroke: "#3A9BAC", textColor: "#E8DCC8", info: "L'invocation est l'essence de l'adoration.\nDeux types : demande et adoration.\nInvoquer autre qu'Allah = shirk." },
+    { id: 7, x: cx-500, y: cy+20, r: 32, label: "الخوف", sub: "Peur", color: "#1E4A5C", stroke: "#3A9BAC", textColor: "#E8DCC8", info: "4 types : secrète (shirk), mondaine (interdite), naturelle (permise), d'Allah (légiférée)." },
+    { id: 8, x: cx-480, y: cy+160, r: 32, label: "الرجاء", sub: "Espoir", color: "#1E4A5C", stroke: "#3A9BAC", textColor: "#E8DCC8", info: "Aspirer à la récompense d'Allah.\n3 sortes : 2 louables, 1 blâmable (l'espoir du négligent)." },
+    { id: 9, x: cx-300, y: cy+240, r: 32, label: "التوكل", sub: "Confiance", color: "#1E4A5C", stroke: "#3A9BAC", textColor: "#E8DCC8", info: "Remettre ses affaires à Allah après avoir agi.\nPlacée en un mort = shirk majeur." },
+    { id: 10, x: cx-130, y: cy+270, r: 32, label: "الإنابة", sub: "Retour", color: "#1E4A5C", stroke: "#3A9BAC", textColor: "#E8DCC8", info: "Retourner vers Allah avec amour, humilité et action.\nSurpasse le simple repentir." },
+    { id: 11, x: cx+130, y: cy+270, r: 32, label: "الخشية", sub: "Crainte", color: "#1E4A5C", stroke: "#3A9BAC", textColor: "#E8DCC8", info: "Peur accompagnée de science.\n« Seuls les savants craignent Allah. » (Fâtir, 28)" },
+    { id: 12, x: cx+300, y: cy+240, r: 32, label: "الذبح", sub: "Sacrifice", color: "#1E4A5C", stroke: "#3A9BAC", textColor: "#E8DCC8", info: "Pour Allah : adoration.\nPour les morts/djinns : shirk majeur.\nPour les invités : recommandé." },
+    { id: 13, x: cx+490, y: cy+150, r: 32, label: "النذر", sub: "Vœu", color: "#1E4A5C", stroke: "#3A9BAC", textColor: "#E8DCC8", info: "S'obliger envers Allah.\nVœu d'obéissance : obligatoire de l'accomplir.\nVœu de désobéissance : interdit." },
+    { id: 14, x: cx+510, y: cy+10, r: 32, label: "الاستغاثة", sub: "Secours", color: "#1E4A5C", stroke: "#3A9BAC", textColor: "#E8DCC8", info: "Implorer une aide urgente.\nÀ un mort : shirk majeur.\nÀ une personne vivante capable : permis." },
+  ];
+ 
+  const edges = [
+    [0,1],[0,2],[0,3],[0,4],[0,5],
+    [4,6],[4,7],[4,8],[4,9],[4,10],[4,11],[4,12],[4,13],[4,14],
+  ];
+ 
+  // Draw edges
+  edges.forEach(([a,b]) => {
+    const na = nodes[a], nb = nodes[b];
+    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1', na.x); line.setAttribute('y1', na.y);
+    line.setAttribute('x2', nb.x); line.setAttribute('y2', nb.y);
+    line.setAttribute('stroke', b <= 5 ? 'rgba(201,168,76,0.3)' : 'rgba(42,123,140,0.25)');
+    line.setAttribute('stroke-width', b <= 5 ? '2' : '1.5');
+    line.setAttribute('stroke-dasharray', b <= 5 ? 'none' : '5,4');
+    svg.appendChild(line);
+  });
+ 
+  // Draw nodes
+  nodes.forEach(n => {
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('class','mm-node');
+    g.setAttribute('transform',`translate(${n.x},${n.y})`);
+ 
+    const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    circle.setAttribute('cx',0); circle.setAttribute('cy',0);
+    circle.setAttribute('r', n.r);
+    circle.setAttribute('fill', n.color);
+    circle.setAttribute('stroke', n.stroke);
+    circle.setAttribute('stroke-width','2.5');
+    g.appendChild(circle);
+ 
+    const text = document.createElementNS('http://www.w3.org/2000/svg','text');
+    text.setAttribute('x',0); text.setAttribute('y', n.sub ? -5 : 5);
+    text.setAttribute('text-anchor','middle');
+    text.setAttribute('dominant-baseline','middle');
+    text.setAttribute('font-family','Amiri, serif');
+    text.setAttribute('font-size', n.r >= 50 ? '15' : n.r >= 40 ? '13' : '11');
+    text.setAttribute('fill', n.textColor);
+    text.setAttribute('font-weight','700');
+    text.textContent = n.label;
+    g.appendChild(text);
+ 
+    if (n.sub) {
+      const sub = document.createElementNS('http://www.w3.org/2000/svg','text');
+      sub.setAttribute('x',0); sub.setAttribute('y', n.r >= 50 ? 12 : n.r >= 40 ? 10 : 8);
+      sub.setAttribute('text-anchor','middle');
+      sub.setAttribute('dominant-baseline','middle');
+      sub.setAttribute('font-family','Source Sans 3, sans-serif');
+      sub.setAttribute('font-size', n.r >= 50 ? '9' : '8');
+      sub.setAttribute('fill', n.textColor);
+      sub.setAttribute('opacity','0.8');
+      sub.textContent = n.sub;
+      g.appendChild(sub);
+    }
+ 
+    g.addEventListener('mouseenter', (e) => {
+      tooltip.innerHTML = `<div class="mm-tooltip-title">${n.sub || n.label}</div>${n.info.replace(/\n/g,'<br>')}`;
+      tooltip.classList.add('show');
+    });
+    g.addEventListener('mousemove', (e) => {
+      const rect = document.getElementById('mindmap-container').getBoundingClientRect();
+      let tx = e.clientX - rect.left + 15;
+      let ty = e.clientY - rect.top + 15;
+      if (tx + 280 > rect.width) tx = e.clientX - rect.left - 280;
+      tooltip.style.left = tx + 'px';
+      tooltip.style.top = ty + 'px';
+    });
+    g.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
+ 
+    svg.appendChild(g);
+  });
+}
+buildMindmap();
+ 
+// ══════════════════════════════════════════════
+// QUIZ
+// ══════════════════════════════════════════════
+let qIdx = 0, score = 0, answered = false;
+ 
+function renderQuiz() {
+  const card = document.getElementById('quizCard');
+  if (qIdx >= quizData.length) {
+    const pct = Math.round(score / quizData.length * 100);
+    card.innerHTML = `
+      <div class="quiz-result">
+        <div class="quiz-score">${score}/${quizData.length}</div>
+        <div class="quiz-result-msg">${pct >= 80 ? '🌟 Excellent ! Vous maîtrisez bien le cours.' : pct >= 50 ? '📚 Bon travail ! Relisez les points manqués.' : '🔄 Continuez à réviser, vous y arriverez !'}<br><span style="font-size:0.85rem;opacity:0.7">Score : ${pct}%</span></div>
+        <button class="quiz-next-btn show" onclick="restartQuiz()">🔄 Recommencer</button>
+      </div>`;
+    return;
+  }
+  const q = quizData[qIdx];
+  const letters = ['A','B','C','D'];
+  const progress = quizData.map((_,i) => `<div class="quiz-dot ${i < qIdx ? 'done' : i === qIdx ? 'current' : ''}"></div>`).join('');
+  card.innerHTML = `
+    <div class="quiz-progress">${progress}</div>
+    <div class="quiz-question">Q${qIdx+1}. ${q.q}</div>
+    <div class="quiz-options">
+      ${q.opts.map((o,i) => `<button class="quiz-opt" onclick="answerQuiz(${i})" id="opt${i}"><div class="opt-letter">${letters[i]}</div>${o}</button>`).join('')}
+    </div>
+    <div class="quiz-feedback" id="qFeedback"></div>
+    <button class="quiz-next-btn" id="qNext" onclick="nextQuestion()">${qIdx === quizData.length-1 ? 'Voir les résultats →' : 'Question suivante →'}</button>`;
+  answered = false;
+}
+ 
+function answerQuiz(i) {
+  if (answered) return;
+  answered = true;
+  const q = quizData[qIdx];
+  const fb = document.getElementById('qFeedback');
+  document.querySelectorAll('.quiz-opt').forEach(b => b.disabled = true);
+  if (i === q.ans) {
+    score++;
+    document.getElementById('opt'+i).classList.add('correct');
+    fb.className = 'quiz-feedback show good';
+  } else {
+    document.getElementById('opt'+i).classList.add('wrong');
+    document.getElementById('opt'+q.ans).classList.add('correct');
+    fb.className = 'quiz-feedback show bad';
+  }
+  fb.textContent = q.fb;
+  document.getElementById('qNext').classList.add('show');
+}
+ 
+function nextQuestion() { qIdx++; renderQuiz(); }
+function restartQuiz() { qIdx = 0; score = 0; renderQuiz(); }
+renderQuiz();
+ 
+// ══════════════════════════════════════════════
+// OBSERVE PILIERS
+// ══════════════════════════════════════════════
+document.querySelectorAll('.pilier').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
